@@ -67,7 +67,7 @@
 #*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_#
 ##########################################################################################################
 echo "-----------------------------------------------------------------------------------------------------------------------------------------"
-figlet -c XMM-NEWTON EPIC SCRIPT
+figlet -c XMM-NEWTON SCRIPT
 echo "-----------------------------------------------------------------------------------------------------------------------------------------"
 
 opted_method=$1
@@ -80,65 +80,164 @@ then	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 	echo "# Options:                                                                                               #"
 	echo "# 1) command line interface(CLI)                 ( pass argument -c at initialisation of script)         #"
 	echo "# 2) Graphical user interface(GUI)               ( pass argument -g at initialisation of script)         #"
-	echo "# 3) Reduction on selected detectors:  PN only MOS only BOTH detector mode                               #"
+#	echo "# 3) Reduction on selected detectors:  PN only MOS only BOTH detector mode                               #"
 #	echo "# NOTE:     Change the path of codes in your device otherwise results will be erroneous.                 # "
 	echo "#--------------------------------------------------------------------------------------------------------#"
 	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_#"
 	printf "########################################################################################################## \n
 
-# Author: GURPREET SINGH                                                                                 # \n
-# Designation: Junior Research Fellow, ARIES.                                                            # \n
-# Date: 07, Dec, 2020                                                                                    # \n
-# Last updated: 10, Dec, 2020                                                                            # \n
-# E-Mail: gurpreet@aries.res.in                                                                          # \n
-########################################################################################################## \n
-#--------------------------------------------------------------------------------------------------------# \n
-#         HERE WE ASSUME REDUCTION PROCEDURE STARTS FROM OBERVATION ID FILE e.g. 0979709709              # \n
-#--------------------------------------------------------------------------------------------------------# \n 
-# NAMING CONVENTION:                                                                                     # \n
-# RAW EVENT FILES: instrument_exposure.FITS                                                              # \n
-# FILTERED FILES: instrument_exposure_stdFILT.FITS         ; std   = S for standard filter               # \n
-#                                                                  = U for predefined filter             # \n
-#                                                                  = User for user defined filter        # \n
-#                                                                  = SOFT for 0.3-2.5 KeV filter         # \n
-#                                                                  = HARD for 2.5-10 KeV filter          # \n
-# BACKGROUND SOFT PROTON FLARE SET:           instrument_exposure_GE10KEV.FITS                           # \n
-# IMAGESET FOR BACKGROUND FLARE CHECK         instrument_exposure_GE10KEV_image.FITS                     # \n
-# NEW GTI FILE:                               instrument_exposure_gtiset.fits                            # \n
-# GTI CORRECTED EVENT FILES:                  instrument_exposure_stdFILT_TIME.FITS                      # \n
-# IMAGE FILES:                                (Filtered files/GTI corrected event file)_IM.FITS          # \n
-# FILTERED SETS FOR BACKGROUND SPECTRA:       (Filtered files/GTI corrected event file)_BKG_SP_FILT.FITS # \n
-# FILTERED SETS FOR SOURCE SPECTRA:           (Filtered files/GTI corrected event file)_SRC_SP_FILT.FITS # \n
-# SOURCE SPECTRA:                             (Filtered files/GTI corrected event file)_SRC_SP.FITS      # \n
-# BACKGROUND SPECTRA:                         (Filtered files/GTI corrected event file)_BKG_SP.FITS      # \n
-# EPAT OUTPUT:                                (Filtered files/GTI corrected event file)_EPAT.ps          # \n
-# SOURCE LIGHT CURVE:                         (Filtered files/GTI corrected event file)_SRC_LC.FITS      # \n
-# BACKGROUND LIGHT CURVE:                     (Filtered files/GTI corrected event file)_BKG_LC.FITS      # \n
-# BACKGROUND SUBTRACTED LIGHT CURVE:          (Filtered files/GTI corrected event file)_LC_CORR.FITS     # \n
-# RMF:                                        (Filtered files/GTI corrected event file)_RMF.FITS         # \n
-# ARF:                                        (Filtered files/GTI corrected event file)_ARF.FITS         # \n
-# pileup info file		              (Filtered files/GTI corrected event file)_pileup.txt       # \n
-# INTERMIDEATE TEXT FILES:                                                                               # \n
-# user_filter.txt                         --> Shows current user filter expression                       # \n
-# coord.txt                               --> Used for RA-DEC to physical coordinate conversion          # \n
-# srcmatchi.txt                           --> To get source region ( circle ) in physical coordinates    # \n
-#                                             using Ds9 (xpaget)                                         # \n
-# bkg_matchi.txt/matchi.txt               --> To get background region ( circle ) in physical coord-     # \n
-#                                             -inates using Ds9 (xpaget)                                 # \n
-# NOTE: INTEMIDEATE TEXT FILES kept on overwriting them. So information present in them after completion # \n
-#       of script is just information of last processed file.                                            # \n
-# PYTHON CODES:                                                                                          # \n
-# coordX.py                            :- Gives X coordinate of source in physical coordinates(used when # \n
-#                                         RA DEC of source is given by user.                             # \n 
-# coordY.py                            :- Gives Y coordinate of source in physical coordinates(used when # \n
-#                                         RA DEC of source is given by user.                             # \n
-# src_circle.py                        :- Gives circle parameters of source in physical coordinates      # \n
-#                                         from Ds9 window (using xpaget).                                # \n
-# bkg_multicircle_xmm.py               :- Gives circle parameters of background in physical              # \n
-#                                         coordinates from Ds9 window (using xpaget).                    # \n
-# IMPORTANT NOTE:                                                                                        # \n
-#                 DO NOT FORGET TO SET CCFPATH BEFORE RUNNING THIS SCRIPT                                # \n 
-########################################################################################################## \n"
+# Author: GURPREET SINGH                                                                                			   # \n
+# Designation: Junior Research Fellow, ARIES.                                                           			   # \n
+# Date: 07, Dec, 2020                                                                                 				   # \n
+# Last updated: 10, jan, 2021                                                                           			   # \n
+# E-Mail: gurpreet@aries.res.in                                                                          			   # \n
+#################################################################################################################################### \n
+#----------------------------------------------------------------------------------------------------------------------------------# \n
+#         HERE WE ASSUME REDUCTION PROCEDURE STARTS FROM OBERVATION ID FILE e.g. 0979709709              			   # \n
+#----------------------------------------------------------------------------------------------------------------------------------# \n 
+# MAKING SENSE OF FILE NAMES:                                                                                                      # \n
+#                                       BASIC FILE NAMES                                                 		           # \n
+# RAW EVENT FILES:                            instrument_exposure.FITS                                                             # \n
+# CLOSED FILTER EVENT FILE:                   instrument_exposure_closed.FITS                                                      # \n
+# FILTERED FILES:                             instrument_exposure_stdFILT.FITS                           			   # \n
+#                                                          ; std   = S for standard filter               			   # \n
+#                                                                  = U for predefined filter             			   # \n
+#                                                                  = User for user defined filter        			   # \n
+#                                                                  = SOFT for 0.3-2.5 KeV filter         			   # \n
+#                                                                  = HARD for 2.5-10 KeV filter          			   # \n
+# BACKGROUND SOFT PROTON FLARE SET:           instrument_exposure_GE10KEV.FITS                           			   # \n
+# IMAGESET FOR BACKGROUND FLARE CHECK         instrument_exposure_GE10KEV_image.FITS                   			           # \n
+# NEW GTI FILE:                               instrument_exposure_gtiset.fits                           			   # \n
+# GTI CORRECTED EVENT FILES:                  instrument_exposure_stdFILT_TIME.FITS                                                # \n
+# SEVERLY DAMAGED BY BACKGROUND FLARE EVENT:  instrument_exposure_SEVERE.FITS                                                      # \n
+# IMAGE FILES:                                (Filtered files/GTI corrected event file)_IM.FITS                                    # \n
+# FILTERED SETS FOR BACKGROUND SPECTRA:       (Filtered files/GTI corrected event file)_BKG_SP_FILT.FITS                           # \n
+# FILTERED SETS FOR SOURCE SPECTRA:           (Filtered files/GTI corrected event file)_SRC_SP_FILT.FITS                           # \n
+# SOURCE SPECTRA:                             (Filtered files/GTI corrected event file)_SRC_SP.FITS                                # \n
+# BACKGROUND SPECTRA:                         (Filtered files/GTI corrected event file)_BKG_SP.FITS                                # \n
+# EPAT OUTPUT:                                (Filtered files/GTI corrected event file)_EPAT.ps                                    # \n
+# SOURCE LIGHT CURVE:                         (Filtered files/GTI corrected event file)_SRC_LC.FITS                                # \n
+# BACKGROUND LIGHT CURVE:                     (Filtered files/GTI corrected event file)_BKG_LC.FITS                                # \n
+# BACKGROUND SUBTRACTED LIGHT CURVE:          (Filtered files/GTI corrected event file)_LC_CORR.FITS                               # \n
+# SOFT SOURCE LIGHT CURVE:                    (Filtered files/GTI corrected event file)_SOFT_SRC_LC.FITS                           # \n
+# SOFT BACKGROUND LIGHT CURVE:                (Filtered files/GTI corrected event file)_SOFT_BKG_LC.FITS                           # \n
+# SOFT BACKGROUND SUBTRACTED LIGHT CURVE:     (Filtered files/GTI corrected event file)_SOFT_LC_CORR.FITS                          # \n
+# HARD SOURCE LIGHT CURVE:                    (Filtered files/GTI corrected event file)_HARD_SRC_LC.FITS                           # \n
+# HARD BACKGROUND LIGHT CURVE:                (Filtered files/GTI corrected event file)_HARD_BKG_LC.FITS                           # \n
+# HARD BACKGROUND SUBTRACTED LIGHT CURVE:     (Filtered files/GTI corrected event file)_HARD_LC_CORR.FITS                          # \n
+# RMF:                                        (Filtered files/GTI corrected event file)_RMF.FITS                                   # \n
+# ARF:                                        (Filtered files/GTI corrected event file)_ARF.FITS                                   # \n
+# GROUPED SPECTRA FILE:                       (Filtered files/GTI corrected event file)_GRP.FITS                                   # \n
+# 100 BINNING LIGHT CURVES USED FOR ADVANCED FILTERING:                    *LC_CORR100.FITS                                        # \n
+#																   # \n
+#                                         QUIESCENT PHASE FILENAMES                                                                # \n
+#																   # \n
+# FILTERED SETS FOR BACKGROUND QUIET SPECTRA: (Filtered files/GTI corrected event file)_BKG_SP_FILT_QUITE.FITS                     # \n
+# FILTERED SETS FOR SOURCE QUIET SPECTRA:     (Filtered files/GTI corrected event file)_SRC_SP_FILT_QUITE.FITS                     # \n
+# QUIET SOURCE SPECTRA:                       (Filtered files/GTI corrected event file)_SRC_SP_QUITE.FITS                          # \n
+# QUIET BACKGROUND SPECTRA:                   (Filtered files/GTI corrected event file)_BKG_SP_QUITE.FITS                          # \n
+# QUIET RMF FILE:                             (Filtered files/GTI corrected event file)_RMF_QUITE.FITS                             # \n
+# QUITE ARF FILE:                             (Filtered files/GTI corrected event file)_ARF_QUITE.FITS                             # \n          
+# QUITE SOURCE LIGHT CURVE:                   (Filtered files/GTI corrected event file)_SRC_LC_QUITE.FITS                          # \n
+# QUITE BACKGROUND LIGHT CURVE:               (Filtered files/GTI corrected event file)_BKG_LC_QUITE.FITS                          # \n
+# QUITE BACKGROUND SUBTRACTED LIGHT CURVE:    (Filtered files/GTI corrected event file)_LC_CORR_QUITE.FITS                         # \n
+# QUITE SOFT SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_SOFT_SRC_LC_QUITE.FITS                     # \n
+# QUITE SOFT BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_SOFT_BKG_LC_QUITE.FITS                     # \n
+# QUITE SOFT BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_SOFT_LC_CORR_QUITE.FITS                    # \n
+# QUITE HARD SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_HARD_SRC_LC_QUITE.FITS                     # \n
+# QUITE HARD BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_HARD_BKG_LC_QUITE.FITS                     # \n
+# QUITE HARD BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_HARD_LC_CORR_QUITE.FITS                    # \n
+#																   # \n
+#                                           FLARE PHASE FILENAMES                                                                  #\n
+#										          	           		           # \n
+# *postfix if user given variable.                                                                                                 # \n
+# *lowsoft and highsoft are lower and upper energy bounds for soft lightcurves                                                     # \n
+# *lowhard and highhard are lower and upper energy bounds for hard lightcurves                                                     # \n
+# FILTERED SETS FOR BACKGROUND FLARE SPECTRA: (Filtered files/GTI corrected event file)_BKG_SP_FILT_F_postfix.FITS                 # \n
+# FILTERED SETS FOR SOURCE FLARE SPECTRA:     (Filtered files/GTI corrected event file)_SRC_SP_FILT_F_postfix.FITS                 # \n
+# FLARE SOURCE SPECTRA:                       (Filtered files/GTI corrected event file)_SRC_SP_F_postfix.FITS                      # \n
+# FLARE BACKGROUND SPECTRA:                   (Filtered files/GTI corrected event file)_BKG_SP_F_postfix.FITS                      # \n
+# FLARE RMF FILE:                             (Filtered files/GTI corrected event file)_RMF_F_postfix.FITS                         # \n
+# FLARE ARF FILE:                             (Filtered files/GTI corrected event file)_ARF_F_postfix.FITS                         # \n 
+# FLARE SOURCE LIGHT CURVE:                   (Filtered files/GTI corrected event file)_SRC_LC_F_postfix.FITS                      # \n
+# FLARE BACKGROUND LIGHT CURVE:               (Filtered files/GTI corrected event file)_BKG_LC_F_postfix.FITS                      # \n
+# FLARE BACKGROUND SUBTRACTED LIGHT CURVE:    (Filtered files/GTI corrected event file)_LC_CORR_F_postfix.FITS                     # \n
+# FLARE SOFT SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_${lowsoft}_${highsoft}_SOFT_SRC_LC_$postfix.FITS # \n
+# FLARE SOFT BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_${lowsoft}_${highsoft}_SOFT_BKG_LC_$postfix.FITS # \n
+# FLARE SOFT BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_${lowsoft}_${highsoft}_SOFT_SRC_LC_$postfix.FITS # \n
+# FLARE HARD SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_${lowhard}_${highhard}_SOFT_SRC_LC_$postfix.FITS # \n
+# FLARE HARD BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_${lowhard}_${highhard}_SOFT_SRC_LC_$postfix.FITS # \n
+# FLARE HARD BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_${lowhard}_${highhard}_SOFT_SRC_LC_$postfix.FITS # \n
+#																   # \n
+#                                        RGS SPECIFIC FILENAMES                                                                    #\n
+#																   # \n
+# EVENT FILES:                                        detector_exposure_EVENT.FITS                                                 #\n
+# SOURCE FILES:                                       detector_exposure_SRCLI.FITS                                                 #\n
+# M_LAMBDA VS XDSP_CORR:                              name contains --> *spatial*                                                  #\n
+# M_LAMBDA VS PI:                                     name contains -->  *pi*                                                      #\n
+# BANANA PLOTS:                                       postscript file with *banana* in name                                        #\n
+# BACKGROUND IMAGE:                                   name contains --> *background*                                               #\n
+# BACKGROUND FLARE CHECK:                             name contains --> *BKG_FLARE_LC*                                             #\n
+# FIRST ORDER SOURCE SPECTRA:                         detector_exposure_SRSPEC_O1.FITS                                             #\n
+# FIRST ORDER BACKGROUND SPECTRA:                     detector_exposure_BGSPEC_O1.FITS                                             #\n
+# SECOND ORDER SOURCE SPECTRA:                        detector_exposure_SRSPEC_O2.FITS                                             #\n
+# SECOND ORDER BACKGROUND SPECTRA:                    detector_exposure_BGSPEC_O2.FITS                                             #\n
+# FIRST ORDER RMF:                                    detector_exposure_RMF_O1.FITS                                                #\n
+# SECOND ORDER RMF:                                   detector_exposure_RMF_O2.FITS                                                #\n
+# COMBINED SPECTRA:                                   prefix for name : R12                                                        #\n
+# BACKGROUND SUBTRACTED SOURCE LIGHT CURVE:           name contains: *SRC_LC_BKG_subtracted.lc                                     #\n
+# *FLUXED SPECTRA CONTAINS *FLUXED* IN ITS NAME.                                                                                   #\n
+# PILED-UP EVENT FILES:                               containes *piledup.FITS in name                                              #\n
+#                                 PHASE RESOLVED SPECTRA                                                                           #\n
+#  ** NAMES CONTAIN *PHASEstart-stop* PATTERN. start AND stop ARE START AND STOP OF PHASE INTERVAL.                                #\n
+#  ** GROUPED SPECTRA FILES CONTAIN *GRP* IN NAME.                                                                                 #\n
+#                                 ********************************                                                                 # \n
+# TEXT FILES:                                                                                                                      # \n
+# (RAW EVENT FILENAME)_filter.txt         --> Contains information on which filter was used for observa-                           # \n
+#                                             -tion.                                                                               # \n
+# user_filter.txt                         --> Shows current values for user defined filter on raw event                            # \n
+#                                             file. ( Note: previous filter information is lost.)                                  # \n
+# coord.txt                               --> Used for RA-DEC to physical coordinate conversion.                                   # \n
+#                                             ( Note: previous information is lost.)                                               # \n
+# srcmatchi.txt                           --> To get source region ( circle ) in physical coordinates                              # \n
+#                                             using Ds9 (xpaget)                                                                   # \n
+# bkg_matchi.txt/matchi.txt               --> To get background region ( circle ) in physical coord-                               # \n
+#                                             -inates using Ds9 (xpaget)                                                           # \n
+# (Filtered files/GTI corrected event									                           # \n
+#  file)_pileup.txt                       --> Contains information about annulas region used while                                 # \n
+#                                             correcting for pileup effects in EPIC.                                               # \n
+# *_GE10KEV.reg                           --> Region file for background flare checking contains informa-                          # \n
+#                                             -tion about each background circle in physical units.                                # \n
+# (Filtered files/GTI corrected event									                           # \n
+# file)_source.region                     --> Source region parameters in physical units for that event                            # \n
+#                                             file.                                                                                # \n
+# (Filtered files/GTI corrected event									                           # \n
+# file)_background.region                 --> Background region parameters in physical units for that                              # \n
+#                                             event file.                                                                          # \n
+# *src.reg                                --> Source region file for RGS.                                                          # \n
+# contaminator.reg                        --> Region file for bright X-ray contaminator, used for RGS.                             # \n
+#                                 ********************************                                                                 # \n
+# PYTHON CODES:                                                                                                                    # \n
+# bkg_multicircle_xmm.py               :- Creates filter expression for background regions. N number of                            # \n
+#                                         background circles can be selected. Modes: for bkg Flare check                           # \n
+#                                         and for science products.				                                   # \n
+# time_fil_expre_maker.py              :- Creates Time filter expression from lightcurve. Used for bkg                             # \n
+#                                         flare removal and for extracting particular regions of time in                           # \n
+#                                         science product files ( i.e. filtered event file).                                       # \n
+# coordX.py                            :- Gives X coordinate of source in physical coordinates(used when                           # \n
+#                                         RA DEC of source is given by user.                                                       # \n 
+# coordY.py                            :- Gives Y coordinate of source in physical coordinates(used when                           # \n
+#                                         RA DEC of source is given by user.                                                       # \n
+# src_circle.py                        :- Gives circle parameters of source in physical coordinates                                # \n
+#                                         from Ds9 window (using xpaget).                                                          # \n
+# rgs_user_index_finder.py             :- Gives the value of USER index in RGS source list files.                                  # \n
+# rgs_contaminator.py                  :- Used for removal of x-ray bright contaminating source in RGS.                            # \n
+# rgs_pileup.py                        :- Plot First order and second order fluxed spectra alongwith                               # \n
+#                                         there ratio.                                                                             # \n
+#                                 ********************************                                                                 # \n
+# IMPORTANT NOTE:                                                                                                                  # \n
+#                 DO NOT FORGET TO SET CCFPATH BEFORE RUNNING THIS SCRIPT                                                          # \n 
+#################################################################################################################################### \n"
 	echo "Please enter valid option..."
 	echo "For GUI:"
 	echo "xmm -g "
