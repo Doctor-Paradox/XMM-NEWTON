@@ -240,9 +240,9 @@ then	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 #################################################################################################################################### \n"
 	echo "Please enter valid option..."
 	echo "For GUI:"
-	echo "xmm -g "
+	echo "xmmadvanced -g > XMM-SCRIPT.log"
 	echo "For CLI:"
-	echo "xmm -c "
+	echo "xmmadvanced -c "
 	exit
 fi
 if [ -z $SAS_CCFPATH ]
