@@ -2420,8 +2420,11 @@ function quite_lightcurve_spectra_gui(){
 				else	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 				fi
+				backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
 				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}"
+				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100/_RMF_QUITE.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100/.FITS}"
 				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
@@ -2473,8 +2476,11 @@ function flare_lightcurve_spectra_gui(){
 				else	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 				fi
+				backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
 				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
+				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100/.FITS}"
 				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
@@ -2503,16 +2509,16 @@ function flare_lightcurve_spectra_gui(){
 set +e
 }
 
-function phase_stamp_to_lightcurves(){
-	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for phase resoolved spectra" --add-entry="Reference epoch(UTC)(e.g. ccyy-mm-ddThh:mm:ss)" --add-entry="Phase at epoch" --add-entry="frequency (i.e. 1/Period(in sec)) (Hz)" --add-entry="Frequency dot"`
-	epoch=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
-	phaseepoch=$(awk -F'|' '{print $2}' <<<$RRVALUE);
-	frequency=$(awk -F'|' '{print $3}' <<<$RRVALUE);
-	frequencydot=$(awk -F'|' '{print $4}' <<<$RRVALUE);
-	for files in *LC_CORR*
-	do	phasecalc --tables="$files:RATE" frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
-	done
-}
+#function phase_stamp_to_lightcurves(){
+#	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for phase resoolved spectra" --add-entry="Reference epoch(UTC)(e.g. ccyy-mm-ddThh:mm:ss)" --add-entry="Phase at epoch" --add-entry="frequency (i.e. 1/Period(in sec)) (Hz)" --add-entry="Frequency dot"`
+#	epoch=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+#	phaseepoch=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+#	frequency=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+#	frequencydot=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+#	for files in *LC_CORR*
+#	do	phasecalc --tables="$files:RATE" frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
+#	done
+#}
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 #                                                                   FUNCTION DECLARATIONS FOR RGS
 #-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -2796,6 +2802,7 @@ function rgs_other_source_corrector(){
 		then	if [ "$opted_method" == "-c" ]
 			then	echo "no images found to compare in mos and pn directories..."
 			else	zenity --warning --text "no images found to compare in mos and pn directories..."
+				return 1
 			fi
 			cd ..
 			echo "we are in $(pwd)"
@@ -3059,9 +3066,11 @@ function phase_resolved_spectra(){
 				if [ $1 = 0 ]
 				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
 				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
 				fi
 			done
@@ -3075,9 +3084,11 @@ function phase_resolved_spectra(){
 				if [ $1 = 0 ]
 				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
 				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
 				fi
 			done
@@ -3091,9 +3102,11 @@ function phase_resolved_spectra(){
 				if [ $1 = 0 ]
 				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
 				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
 				fi
 			done
@@ -3107,9 +3120,11 @@ function phase_resolved_spectra(){
 				if [ $1 = 0 ]
 				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
 				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
 					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
 					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
 				fi
 			done
