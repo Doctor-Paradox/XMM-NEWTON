@@ -3207,8 +3207,8 @@ then	if [ "$opted_method" == "-c" ]
 		deti2="Quiscent lightcurves maker"
 		deti3="Phase resolved spectra"
 		deti4="Flare lightcurve + spectra extraction"
-		deti5="Add PHASE stamp to lightcurves"
-		selc=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'PLEASE SELECT:' --column 'Select...' --column '...' FALSE "$deti1" FALSE "$deti2" FALSE "$deti3" FALSE "$deti4" FALSE "$deti5"`
+		#deti5="Add PHASE stamp to lightcurves"
+		selc=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'PLEASE SELECT:' --column 'Select...' --column '...' FALSE "$deti1" FALSE "$deti2" FALSE "$deti3" FALSE "$deti4"` # FALSE "$deti5"`
 	
 		if [ "$selc" == "$deti1" ]
 		then 	cd pn
@@ -3239,13 +3239,13 @@ then	if [ "$opted_method" == "-c" ]
 			cd mos
 			flare_lightcurve_spectra_gui 0;
 			cd ..
-		elif [ "$selc" == "$deti5" ]
-		then	cd pn
-			phase_stamp_to_lightcurves;
-			cd ..
-			cd mos
-			phase_stamp_to_lightcurves
-			cd ..
+#		elif [ "$selc" == "$deti5" ]
+#		then	cd pn
+#			phase_stamp_to_lightcurves;
+#			cd ..
+#			cd mos
+#			phase_stamp_to_lightcurves
+#			cd ..
 		else	exit
 		fi
 	fi
