@@ -2424,7 +2424,7 @@ function quite_lightcurve_spectra_gui(){
 				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
 				
 				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100/.FITS}"
+				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
 				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
@@ -2480,7 +2480,7 @@ function flare_lightcurve_spectra_gui(){
 				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
 				
 				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100/.FITS}"
+				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
 				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
 				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
