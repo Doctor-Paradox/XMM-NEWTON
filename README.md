@@ -14,3 +14,4 @@ Note:
   some features are missing in CLI mode so GUI mode is preffered.
   While script runs, it opens ds9 windows recursively, keep sure just newest ds9 window is open.
   Already opened ds9 windows should be killed before continuing to next step. 
+  It is advised to make a copy of .bashrc file prior to installation of this script. 
