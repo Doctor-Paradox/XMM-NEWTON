@@ -240,7 +240,7 @@ then	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 #################################################################################################################################### \n"
 	echo "Please enter valid option..."
 	echo "For GUI:"
-	echo "xmmadvanced -g > XMM-SCRIPT.log"
+	echo "xmmadvanced -g 2>&1 | tee XMM-SCRIPT.log"
 	echo "For CLI:"
 	echo "xmmadvanced -c "
 	exit
@@ -2702,22 +2702,22 @@ function rgs_bkg_flare_corrector(){
 				answer=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'filter expression to be used on what:' --column 'Select...' --column 'Filter expression' TRUE "$op1" FALSE "$op2"`
 				if [ "$answer" == "$op1" ]
 				then	maxr=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Max. allowed rate:"`
-					tabgtigen table=${files//EVENT/BKG_FLARE_LC} expression="RATE<=$maxr" gtiset=${files//EVENT.FITS/_gtiset.fits}
+					tabgtigen table=${files//EVENT/BKG_FLARE_LC} expression="RATE<=$maxr" gtiset=${files//EVENT.FITS/gtiset.fits}
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "Select the pairs of good time intervals in ratecurve shown by clicking on time-axis"
 				timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
 				Timefil=$(python $timecode ${files//EVENT/BKG_FLARE_LC})
 				zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "printf Time filter expression used is: $Timefil"
 				#Timefil=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Enter exact time filtering expression:"`
-				tabgtigen table=${files//EVENT/BKG_FLARE_LC} expression="$Timefil" gtiset=${files//EVENT.FITS/_gtiset.fits}
+				tabgtigen table=${files//EVENT/BKG_FLARE_LC} expression="$Timefil" gtiset=${files//EVENT.FITS/gtiset.fits}
 				fi
 			fi
 		fi
 		echo "rgsproc entrystage=3:filter auxgtitables=gtiset_R1.fits"
 		#rgsproc withsrc=yes srclabel='USER' srcstyle=radec srcra=$ra srcdec=$dec entrystage=3:filter auxgtitables=gtiset_R1.fits
 		set +e
-		if [ $(ls ${files//EVENT.FITS/_gtiset.fits} | wc -l) = 0 ]
+		if [ $(ls ${files//EVENT.FITS/gtiset.fits} | wc -l) = 0 ]
 		then	echo "..."
-		else	rgsproc entrystage=3:filter auxgtitables=${files//EVENT.FITS/_gtiset.fits}		
+		else	rgsproc entrystage=3:filter auxgtitables=${files//EVENT.FITS/gtiset.fits}		
 			echo "removing previous files..."
 			rm R*EVENT.FITS
 			rm R*SRCLI.FITS
@@ -2812,7 +2812,7 @@ function rgs_other_source_corrector(){
 	fi
 	#cd ..
 	echo "we are in $(pwd)"
-	cd rgs
+	cd $directroy
 	for files in R1*EVENT.FITS
 	do	ds9 EPIC_IMAGE.FITS ${files//EVENT/spatial} &
 		if [ "$opted_method" == "-c" ]
@@ -3154,28 +3154,28 @@ function phase_resolved_spectra(){
 #                                                                                   RUNNING MAIN PROCEDURES BY CALLING FUNCTIONS
 #                                                                                       ------------------------------------
 
-if [ $pnonly = 1 ]
+if [[ $pnonly = 1 ]]
 then	only_pn_reduction;
 fi
 
-if [ $mosonly = 1 ]
+if [[ $mosonly = 1 ]]
 then	only_mos_reduction;
 fi
 
 
-if [ $mospn = 1 ]
+if [[ $mospn = 1 ]]
 then	only_pn_reduction;
 	only_mos_reduction;
 fi
 
-if [ $analysismaker = 1 ]
+if [[ $analysismaker = 1 ]]
 then	analysis_maker;
 else	cd analysis
 	grouper;
 	cd ..
 fi
 
-if [ $advancedoption = 1 ]
+if [[ $advancedoption = 1 ]]
 then	if [ "$opted_method" == "-c" ]
 	then	imlooper=0
 		while [ $imlooper = 0 ]
@@ -3251,7 +3251,7 @@ then	if [ "$opted_method" == "-c" ]
 	fi
 fi
 
-if [ $rgsonly = 1 ]
+if [[ $rgsonly = 1 ]]
 then	cd rgs
 	rgsproc_runner;
 	rgs_renamer;
