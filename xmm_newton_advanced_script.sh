@@ -1633,7 +1633,7 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					Ycord=`python $Ycode`
 					#Xcord=`python /home/aries/bin/coordX.py`
 					#Ycord=`python /home/aries/bin/coordY.py`
-					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$(printf "PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"
+					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$("PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"
 				
 				elif [ "$srcchoice" == "$pt2" ]
 				then	ds9  -scale log $files &	
@@ -1647,7 +1647,7 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 						Ycord=${array[1]}
 						areaPix=${array[2]}
 						area=`echo "$areaPix*0.05" | bc`
-						zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$(printf "PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"					
+						zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$("PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"					
 					else	continue
 					fi
 				fi
@@ -1681,13 +1681,16 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					set -e
 					bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
 					bkgexpre=$(python $bkgcode bkg_matchi.txt 'pn' 'no')		
- 							
+ 					bkgexpre_for_pileup=$(echo "$bkgexpre" | sed 's/^.*((/((/')		
  					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CREATING BACKGROUND SPECTRA..."
- 					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+# 					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+ 					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre_for_pileup" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+
 						
 					
 				fi			
- 				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+# 				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+ 				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 
 				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
 				#echo "ON SOURCE "
@@ -1702,7 +1705,8 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 				function pileupcorr() {
 					innera=`echo "$inner/0.05" | bc`
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Excising the innermost part of PSF."
-					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+#					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 					echo "xcord: $Xcord (in detecter cor) , xcord: $Ycord (in detecter cor), outer radius:$area , inner radius: $inner , in arcsec ">${files//_IM.FITS/_pileup.txt}
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CHECKING FOR PILE-UP"
 					epatplot set="${files//_IM.FITS/_SRC_SP_FILT.FITS}" plotfile="${files//_IM.FITS/_EPAT.ps}"  useplotfile=yes withbackgroundset=yes backgroundset="${files//_IM.FITS/_BKG_SP_FILT.FITS}"
@@ -1713,6 +1717,15 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					then	inner=$((inner+2))	
 						pileupcorr;
 					else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Alright! skipping pileup corrections..." 
+						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+			
+ 						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479		
+
+				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
+				#echo "ON SOURCE "
+				backscale spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+				#echo "ON BACKGROUND"
+				backscale spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
 					fi
 
 				}
@@ -1722,6 +1735,17 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 				then	inner=$((inner+2))	
 					pileupcorr;
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Alright! skipping pileup corrections..." 
+					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+			
+				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(FLAG==0)&&(PATTERN<=4)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+ 				
+
+				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
+				#echo "ON SOURCE "
+				backscale spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+				#echo "ON BACKGROUND"
+				backscale spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+					
 				fi
 
 				pileans=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Was pile-up removed successfully?"; echo $?)
@@ -2068,14 +2092,16 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
 						expre=$(python $bkgcode bkg_matchi.txt 'mos' 'no')
 						#expre=`python /home/aries/bin/bkg_circle.py`
-						
+						expre_for_pileup=(echo "$expre" | sed 's/^.*((/((/')
 						zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CREATING BACKGROUND SPECTRA..."
-						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+						#evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre_for_pileup" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
 					
 
 				fi		
 				
-				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="#XMMEA_EM && (PATTERN<=12)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				#evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="#XMMEA_EM && (PATTERN<=12)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
 
 				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
 				#echo "ON SOURCE "
@@ -2090,7 +2116,8 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 				function pileupcorr() {
 					innera=`echo "$inner/0.05" | bc`
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Excising the innermost part of PSF."
-					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="#XMMEA_EM && (PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+					#evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="#XMMEA_EM && (PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
 	#				echo "outer radius:$area , inner radius: $inner , in arcsec">pileup.txt
 					echo "xcord: $Xcord (in detecter cor) , ycord: $Ycord (in detecter cor), outer radius:$area , inner radius: $inner , in arcsec ">${files//_IM.FITS/_pileup.txt}
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CHECKING FOR PILE-UP"
@@ -2102,6 +2129,15 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					then	inner=$((inner+2))	
 						pileupcorr;
 					else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Alright! skipping pileup corrections..." 
+						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+			
+ 						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="(#XMMEA_EM &&PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999		
+
+				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
+				#echo "ON SOURCE "
+				backscale spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+				#echo "ON BACKGROUND"
+				backscale spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
 					fi
 
 				}
@@ -2111,6 +2147,16 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 				then	inner=$((inner+2))	
 					pileupcorr;
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Alright! skipping pileup corrections..." 
+					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+			
+ 					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_SRC_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="#XMMEA_EM && (PATTERN<=12)&&((X,Y) IN circle($Xcord,$Ycord,$areaPix))" withspectrumset=yes spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Making backscale corrections"
+				#echo "ON SOURCE "
+				backscale spectrumset="${files//_IM.FITS/_SRC_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+				#echo "ON BACKGROUND"
+				backscale spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					
 				fi
 
 
