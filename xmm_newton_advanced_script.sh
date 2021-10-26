@@ -42,7 +42,7 @@
 #                                             for pile-up correction.                                    #
 # NOTE: INTEMIDEATE TEXT FILES kept on overwriting them. So information present in them after completion #
 #       of script is just information of last processed file.                                            #
-# PYTHON CODES:                                                                                          #
+# python CODES:                                                                                          #
 # coordX.py                            :- Gives X coordinate of source in physical coordinates.          #
 # coordY.py                            :- Gives Y coordinate of source in physical coordinates.          #
 # src_circle.py                        :- Gives circle parameters of source in physical coordinates      #
@@ -132,21 +132,21 @@ then	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 #																   # \n
 #                                         QUIESCENT PHASE FILENAMES                                                                # \n
 #																   # \n
-# FILTERED SETS FOR BACKGROUND QUIET SPECTRA: (Filtered files/GTI corrected event file)_BKG_SP_FILT_QUITE.FITS                     # \n
-# FILTERED SETS FOR SOURCE QUIET SPECTRA:     (Filtered files/GTI corrected event file)_SRC_SP_FILT_QUITE.FITS                     # \n
-# QUIET SOURCE SPECTRA:                       (Filtered files/GTI corrected event file)_SRC_SP_QUITE.FITS                          # \n
-# QUIET BACKGROUND SPECTRA:                   (Filtered files/GTI corrected event file)_BKG_SP_QUITE.FITS                          # \n
-# QUIET RMF FILE:                             (Filtered files/GTI corrected event file)_RMF_QUITE.FITS                             # \n
-# QUITE ARF FILE:                             (Filtered files/GTI corrected event file)_ARF_QUITE.FITS                             # \n          
-# QUITE SOURCE LIGHT CURVE:                   (Filtered files/GTI corrected event file)_SRC_LC_QUITE.FITS                          # \n
-# QUITE BACKGROUND LIGHT CURVE:               (Filtered files/GTI corrected event file)_BKG_LC_QUITE.FITS                          # \n
-# QUITE BACKGROUND SUBTRACTED LIGHT CURVE:    (Filtered files/GTI corrected event file)_LC_CORR_QUITE.FITS                         # \n
-# QUITE SOFT SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_SOFT_SRC_LC_QUITE.FITS                     # \n
-# QUITE SOFT BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_SOFT_BKG_LC_QUITE.FITS                     # \n
-# QUITE SOFT BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_SOFT_LC_CORR_QUITE.FITS                    # \n
-# QUITE HARD SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_HARD_SRC_LC_QUITE.FITS                     # \n
-# QUITE HARD BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_HARD_BKG_LC_QUITE.FITS                     # \n
-# QUITE HARD BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_HARD_LC_CORR_QUITE.FITS                    # \n
+# FILTERED SETS FOR BACKGROUND QUIET SPECTRA: (Filtered files/GTI corrected event file)_BKG_SP_FILT_QUIET.FITS                     # \n
+# FILTERED SETS FOR SOURCE QUIET SPECTRA:     (Filtered files/GTI corrected event file)_SRC_SP_FILT_QUIET.FITS                     # \n
+# QUIET SOURCE SPECTRA:                       (Filtered files/GTI corrected event file)_SRC_SP_QUIET.FITS                          # \n
+# QUIET BACKGROUND SPECTRA:                   (Filtered files/GTI corrected event file)_BKG_SP_QUIET.FITS                          # \n
+# QUIET RMF FILE:                             (Filtered files/GTI corrected event file)_RMF_QUIET.FITS                             # \n
+# QUIET ARF FILE:                             (Filtered files/GTI corrected event file)_ARF_QUIET.FITS                             # \n          
+# QUIET SOURCE LIGHT CURVE:                   (Filtered files/GTI corrected event file)_SRC_LC_QUIET.FITS                          # \n
+# QUIET BACKGROUND LIGHT CURVE:               (Filtered files/GTI corrected event file)_BKG_LC_QUIET.FITS                          # \n
+# QUIET BACKGROUND SUBTRACTED LIGHT CURVE:    (Filtered files/GTI corrected event file)_LC_CORR_QUIET.FITS                         # \n
+# QUIET SOFT SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_SOFT_SRC_LC_QUIET.FITS                     # \n
+# QUIET SOFT BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_SOFT_BKG_LC_QUIET.FITS                     # \n
+# QUIET SOFT BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_SOFT_LC_CORR_QUIET.FITS                    # \n
+# QUIET HARD SOURCE LIGHT CURVE:              (Filtered files/GTI corrected event file)_HARD_SRC_LC_QUIET.FITS                     # \n
+# QUIET HARD BACKGROUND LIGHT CURVE:          (Filtered files/GTI corrected event file)_HARD_BKG_LC_QUIET.FITS                     # \n
+# QUIET HARD BACKGROUND SUBTRACTED LIGHTCURVE:(Filtered files/GTI corrected event file)_HARD_LC_CORR_QUIET.FITS                    # \n
 #																   # \n
 #                                           FLARE PHASE FILENAMES                                                                  #\n
 #										          	           		           # \n
@@ -217,7 +217,7 @@ then	echo "#*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 # *src.reg                                --> Source region file for RGS.                                                          # \n
 # contaminator.reg                        --> Region file for bright X-ray contaminator, used for RGS.                             # \n
 #                                 ********************************                                                                 # \n
-# PYTHON CODES:                                                                                                                    # \n
+# python CODES:                                                                                                                    # \n
 # bkg_multicircle_xmm.py               :- Creates filter expression for background regions. N number of                            # \n
 #                                         background circles can be selected. Modes: for bkg Flare check                           # \n
 #                                         and for science products.				                                   # \n
@@ -287,7 +287,8 @@ then	imlooper=0
 		else echo "PLEASE SELECT VALID OPTION."
 		fi
 	done
-else	det1="PN ONLY"
+else	zenity --title "XMM-SCRIPT" --notification --text="analysis folder maker do not group spectra..."
+	det1="PN ONLY"
 	det2="MOS ONLY"
 	det3="BOTH PN and MOS"
 	det4="RGS ONLY"
@@ -769,8 +770,13 @@ function FILTERING() {
 #============================================================================================================================================
 function bkg_flare_pn(){
 	set +e
+	gticheck=$(ls *_gtiset.fits | wc -l)
+	[[ $gticheck != 0 ]] && return 0
+	#gticheck=$(ls *_gtiset.fits | wc -l)
+	#if [ $gticheck = 0 ]
+	#then	
 	for files in PN*.FITS
-	do	[[ $files == *FILT* ]] && continue
+		do	[[ $files == *FILT* ]] && continue
 		[[ $files == *GE10* ]] && continue
 		if [ $opted_method == '-c' ]
 		then	[[ $files == *closed* ]] && echo "$files have closed filter so skipping it." && continue
@@ -868,18 +874,26 @@ function bkg_flare_pn(){
 			elif [[ ( $severity = 0 ) && ( $que = 0 ) ]]
 			then	op1="RATE"
 				op2="TIME"
-				answer=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'filter expression to be used on what:' --column 'Select...' --column 'Filter expression' TRUE "$op1" FALSE "$op2"`
+				op3="USE TIME EXPRESSION FROM MOS DATA"
+				answer=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'filter expression to be used on what:' --column 'Select...' --column 'Filter expression' TRUE "$op1" FALSE "$op2" FALSE "$op3"`
 				if [ "$answer" == "$op1" ]
 				then	maxr=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Max. allowed rate:"`
 					tabgtigen table=$varr expression="RATE<=$maxr" gtiset=${files//.FITS/_gtiset.fits}
+				elif [ "$answer" == "$op3" ]
+				then	Timefil=$(more ../mos/Time_filter.txt)
+					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
+					#Timefil=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Enter exact time filtering expression:"`
+					tabgtigen table=$varr expression="$Timefil" gtiset=${files//.FITS/_gtiset.fits}
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "Select the pairs of good time intervals in ratecurve shown by clicking on time-axis"
 					timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
 					Timefil=$(python $timecode $varr)
+					echo "$Timefil"> Time_filter.txt
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "printf Time filter expression used is: $Timefil"
 					#Timefil=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Enter exact time filtering expression:"`
 					tabgtigen table=$varr expression="$Timefil" gtiset=${files//.FITS/_gtiset.fits}
 				fi
 			fi
+		#fi
 		fi
 	set +e
 	done
@@ -1066,12 +1080,15 @@ function MFILTERING() {
 			set -e
 			evselect table=$mfiles withfilteredset=yes expression="$mdefa" filteredset=$mvar filtertype=expression keepfilteroutput=yes updateexposure=yes filterexposure=yes
 			set +e
-			gticheck=$(ls ${mfiles//.FITS/_gtiset.fits} | wc -l)
+			gticheck=$(ls *_gtiset.fits | wc -l)
 			if [ $gticheck = 0 ]
-			then if [ $opted_method == '-c' ]
+			then 	if [ $opted_method == '-c' ]
 				then	echo "Seems no gti correction was needed for this set. Skipping Filtering with gti."
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Seems no gti correction was needed for this set. Skipping Filtering with gti."
 				fi
+			elif [ $gticheck = 1 ]
+			then	gtiis=$(ls *_gtiset.fits)
+				evselect table=$mvar withfilteredset=yes expression="GTI($gtiis,TIME)" filteredset=${mvar//.FITS/_TIME.FITS}	filtertype=expression keepfilteroutput=yes updateexposure=yes filterexposure=yes
 			else	if [ $opted_method == '-c' ]
 				then	echo "Creating filtered file with new gti correction."
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Creating filtered file with new gti correction"
@@ -1092,9 +1109,23 @@ function MFILTERING() {
 
 function bkg_flare_mos(){
 	set +e
+	gticheck=$(ls *_gtiset.fits | wc -l)
+	[[ $gticheck != 0 ]] && return 0
+	op1formos="MOS1 only"
+	op2formos="MOS2 only"
+	op3formos="BOTH MOS"
+	answerformos=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'Check for background flare on: ' --column 'Select...' --column 'Detector' FALSE "$op1formos" FALSE "$op2formos" TRUE "$op3formos"`
 	for mfiles in MOS*.FITS
 	do	[[ $mfiles == *FILT* ]] && continue
 		[[ $mfiles == *GE10* ]] && continue
+		
+		if [ "$answerformos" == "$op1formos" ]
+		then 	[[ $mfiles == MOS2* ]] && continue
+		elif [ "$answerformos" == "$op2formos" ]
+		then	[[ $mfiles == MOS1* ]] && continue
+		fi
+		
+		
 		if [ $opted_method == '-c' ]
 		then	[[ $mfiles == *closed* ]] && echo "$files have closed filter so skipping it." && continue
 		else	[[ $mfiles == *closed* ]] && zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "$files have closed filter so skipping it." && continue
@@ -1167,7 +1198,7 @@ function bkg_flare_mos(){
 				#	play -q -n synth 0.1 sin 880
 					read maxr
 					echo "tabgtigen table=$mvarr expression='RATE<=$maxr' gtiset=${mfiles//.FITS/_}gtiset.fits"
-					tabgtigen table=$mvarr expression="RATE<=$maxr" gtiset=${mfiles//.FITS/_gtiset.fits} 
+					tabgtigen table=$mvarr expression="RATE<=$maxr" gtiset=gtiset.fits
 				elif [ $ans = T ]
 				then	#echo "Give exact expression for time filtering."
 				#play -q -n synth 0.1 sin 880
@@ -1176,7 +1207,7 @@ function bkg_flare_mos(){
 					timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
 					Timefil=$(python $timecode $mvarr)
 					echo "tabgtigen table=$varr expression='$Timefil' gtiset=gtiset_${std}.fits"
-					tabgtigen table=$mvarr expression="$Timefil" gtiset=${mfiles//.FITS/_gtiset.fits}	
+					tabgtigen table=$mvarr expression="$Timefil" gtiset=gtiset.fits	
 				fi
 			else	echo "Seems data is severely damaged by soft proton flares. Will skip reduction for this set for rest and all."
 				mv ${mfiles} ${mfiles//.FITS/_SEVERE.FITS}
@@ -1190,13 +1221,20 @@ function bkg_flare_mos(){
 			elif [[ ( $severity = 0 ) && ( $que = 0 ) ]]
 			then	op1="RATE"
 				op2="TIME"
-				answer=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'filter expression to be used on what:' --column 'Select...' --column 'Filter expression' TRUE "$op1" FALSE "$op2"`
+				op3="USE TIME EXPRESSION FROM PN DATA"
+				answer=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --height=275 --list --radiolist --text 'filter expression to be used on what:' --column 'Select...' --column 'Filter expression' TRUE "$op1" FALSE "$op2" FALSE "$op3"`
 				if [ "$answer" == "$op1" ]
 				then	maxr=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Max. allowed rate:"`
 					tabgtigen table=$mvarr expression="RATE<=$maxr" gtiset=${mfiles//.FITS/_gtiset.fits}
+				elif [ "$answer" == "$op3" ]
+				then	Timefil=$(more ../pn/Time_filter.txt)
+					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
+					#Timefil=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Enter exact time filtering expression:"`
+					tabgtigen table=$mvarr expression="$Timefil" gtiset=${mfiles//.FITS/_gtiset.fits}
 				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "Select the pairs of good time intervals in ratecurve shown by clicking on time-axis"
 					timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
 					Timefil=$(python $timecode $mvarr)
+					echo "$Timefil" > Time_filter.txt
 					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
 					#Timefil=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms --title "GTI BUILDER EXPRESSION SELECTOR" --add-entry="Enter exact time filtering expression:"`
 					tabgtigen table=$mvarr expression="$Timefil" gtiset=${mfiles//.FITS/_gtiset.fits}
@@ -1633,7 +1671,7 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					Ycord=`python $Ycode`
 					#Xcord=`python /home/aries/bin/coordX.py`
 					#Ycord=`python /home/aries/bin/coordY.py`
-					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$("PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"
+					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$(printf "PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"
 				
 				elif [ "$srcchoice" == "$pt2" ]
 				then	ds9  -scale log $files &	
@@ -1647,7 +1685,7 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 						Ycord=${array[1]}
 						areaPix=${array[2]}
 						area=`echo "$areaPix*0.05" | bc`
-						zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$("PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"					
+						zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text "$(printf "PARAMETERS in PHYSICAL COORDINATES ARE: \n X: $Xcord \n Y: $Ycord \n Area: $area")"					
 					else	continue
 					fi
 				fi
@@ -1681,7 +1719,9 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 					set -e
 					bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
 					bkgexpre=$(python $bkgcode bkg_matchi.txt 'pn' 'no')		
- 					bkgexpre_for_pileup=$(echo "$bkgexpre" | sed 's/^.*((/((/')		
+ 					bkgexpre_for_pileup=$(echo "$bkgexpre" | sed 's/^.*((/((/')
+ 					bkgexpre_for_pileup=${bkgexpre_for_pileup::-1}
+ 							
  					zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CREATING BACKGROUND SPECTRA..."
 # 					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
  					evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre_for_pileup" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
@@ -1780,18 +1820,96 @@ function lightcurves_gui(){
 		
 	else	for files in *IM.FITS
 		do	set -e
-			if [ $(ls ${files//_IM.FITS/_SRC_SP_FILT.FITS}) = 0 ]
+			if [ $(ls ${files//_IM.FITS/.FITS}) = 0 ]
 			then echo "skipping" 
-			else	evselect table="${files//_IM.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_IM.FITS/_SRC_LC.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
-				evselect table="${files//_IM.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
-				epiclccorr srctslist="${files//_IM.FITS/_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				#just for quite and flaring light curve extraction 
-				evselect table="${files//_IM.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_IM.FITS/_SRC_LC100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
-				evselect table="${files//_IM.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
-				epiclccorr srctslist="${files//_IM.FITS/_SRC_LC100.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR100.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC100.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				dsplot table="${files//_IM.FITS/_LC_CORR.FITS}" x=TIME y=RATE &
-				sleep 5
-				pkill -9 xmgrace
+			else	
+				while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+				Xcord=${array[0]}
+				Ycord=${array[1]}
+				areaPix=${array[2]}
+				if [ $1 = 0 ]
+				 then	if [ $(ls *pileup.txt |wc -l) != 0 ]
+				 	then	#pileup files exist...
+				 		pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		#"((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))"
+				 		evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
+				 		evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
+				
+						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+						if [ $(ls ${files//_IM.FITS/_background.region} |wc -l) = 0 ]
+						then continue
+						else	bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'pn' 'no')	
+						fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR_300_10000.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR100.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+					if [ $lcanss = 0 ]
+					then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+						lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+						highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+						lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+						highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+					else	echo "Alright! skipping this step."
+					fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [$lowsoft:$highsoft])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowsoft:$highsoft])"	
+						epiclccorr srctslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [$lowhard:$highhard])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowhard:$highhard])"	
+						epiclccorr srctslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes	
+					
+						
+				 	
+				 	
+				 	else	evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
+				 		evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
+				
+						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+						if [ $(ls ${files//_IM.FITS/_background.region} |wc -l) = 0 ]
+						then continue
+						else	bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'pn' 'no')
+						fi	
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR_300_10000.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR100.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+					if [ $lcanss = 0 ]
+					then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+						lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+						highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+						lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+						highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+					else	echo "Alright! skipping this step."
+					fi	
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [$lowsoft:$highsoft])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowsoft:$highsoft])"	
+						epiclccorr srctslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [$lowhard:$highhard])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowhard:$highhard])"	
+						epiclccorr srctslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes	
+					
+						
+					fi
+				else	if [ $(ls *pileup.txt |wc -l) != 0 ]
+				 	then	#pileup files exist...
+				 		pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		#"((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))"
+				 		evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
+						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+						if [ $(ls ${files//_IM.FITS/_background.region} |wc -l) = 0 ]
+						then continue
+						else	bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'mos' 'no')	
+						fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR_300_10000.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR100.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" withbkgset=yes applyabsolutecorrections=yes
 				lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
 				if [ $lcanss = 0 ]
 				then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
@@ -1799,23 +1917,49 @@ function lightcurves_gui(){
 					highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
 					lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
 					highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
-					evselect table="${files//_IM.FITS/_SRC_SP_FILT.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="(PI in [$lowsoft:$highsoft])"
-					evselect table="${files//_IM.FITS/_BKG_SP_FILT.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="(PI in [$lowsoft:$highsoft])"	
-					epiclccorr srctslist="${files//_IM.FITS/_SOFT_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_SOFT_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_SOFT_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
-					evselect table="${files//_IM.FITS/_SRC_SP_FILT.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="(PI in [$lowhard:$highhard])"
-					evselect table="${files//_IM.FITS/_BKG_SP_FILT.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="(PI in [$lowhard:$highhard])"	
-					epiclccorr srctslist="${files//_IM.FITS/_HARD_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_HARD_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_HARD_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes	
-					
-					
-					
-					dsplot table="${files//_IM.FITS/_SOFT_LC_CORR.FITS}" x=TIME y=RATE &
-					sleep 5
-					pkill -9 xmgrace
-					dsplot table="${files//_IM.FITS/_HARD_LC_CORR.FITS}" x=TIME y=RATE &
-					sleep 5
-					pkill -9 xmgrace
-				else	zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "Alright! skipping this step."
+				else	echo "Alright! skipping this step."
 				fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [$lowsoft:$highsoft])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowsoft:$highsoft])"	
+						epiclccorr srctslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&(PI in [$lowhard:$highhard])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowhard:$highhard])"	
+						epiclccorr srctslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes	
+					
+						
+				 	
+				 	
+				 	
+				 	else	evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes expression="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [300:10000])" rateset="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes
+						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+						if [ $(ls ${files//_IM.FITS/_background.region} |wc -l) = 0 ]
+						then continue
+						else	bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'mos' 'no')	
+						fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=yes rateset="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="${bkgexpre}&&(PI in [300:10000])"
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR_300_10000.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						epiclccorr srctslist="${files//_IM.FITS/_SRC_LC_300_10000_100.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_LC_CORR100.FITS}" bkgtslist="${files//_IM.FITS/_BKG_LC_300_10000_100.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+				if [ $lcanss = 0 ]
+				then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+					lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+					highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+					lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+					highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+				else	echo "Alright! skipping this step."
+					fi
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [$lowsoft:$highsoft])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowsoft:$highsoft])"	
+						epiclccorr srctslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&(PI in [$lowhard:$highhard])"
+						evselect table="${files//_IM.FITS/.FITS}" withrateset=Y rateset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" maketimecolumn=Y timebinsize=10 makeratecolumn=Y expression="${bkgexpre}&&(PI in [$lowhard:$highhard])"	
+						epiclccorr srctslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_SRC_LC.FITS}" eventlist="${files//_IM.FITS/.FITS}" outset="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_LC_CORR.FITS}" bkgtslist="${files//_IM.FITS/_HARD_${lowhard}_${highhard}_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes	
+					
+						
+					fi
+				fi	
 			fi
 		done
 	fi
@@ -2092,7 +2236,8 @@ else	imcheck=$(ls *IM.FITS | wc -l)
 						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
 						expre=$(python $bkgcode bkg_matchi.txt 'mos' 'no')
 						#expre=`python /home/aries/bin/bkg_circle.py`
-						expre_for_pileup=(echo "$expre" | sed 's/^.*((/((/')
+						expre_for_pileup=$(echo "$expre" | sed 's/^.*((/((/')
+						expre_for_pileup=${expre_for_pileup::-1}
 						zenity --title "XMM-SCRIPT" --width 500 --height 500 --notification --text "CREATING BACKGROUND SPECTRA..."
 						#evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
 						evselect table="${files//_IM.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_IM.FITS/_BKG_SP_FILT.FITS}" keepfilteroutput=yes filtertype="expression" expression="$expre_for_pileup" withspectrumset=yes spectrumset="${files//_IM.FITS/_BKG_SP.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
@@ -2232,7 +2377,7 @@ function only_pn_reduction(){
 			echo "lightcurves------------------------------done---------------------------------------"
 		else	nah=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want lightcurves?"; echo $?)
 			if [ $nah = 0 ]
-			then	lightcurves_gui;
+			then	lightcurves_gui 0;
 			fi
 			echo "lightcurves------------------------------done---------------------------------------"
 		fi
@@ -2251,18 +2396,22 @@ function only_pn_reduction(){
 function grouper(){
 	set +e
 	for files in *SRC_SP.FITS
-		do	grppha ${files} !${files//SRC_SP.FITS/GRP.FITS} comm="chkey BACKFILE ${files//SRC_SP.FITS/BKG_SP.FITS} & chkey RESPFILE ${files//SRC_SP.FITS/RMF.FITS} & chkey ANCRFILE ${files//SRC_SP.FITS/ARF.FITS} & group min 20 & exit"
+		do	grppha ${files} !${files//SRC_SP.FITS/GRP.FITS} comm="chkey BACKFILE ${files//SRC_SP.FITS/BKG_SP.FITS} & chkey RESPFILE ${files//SRC_SP.FITS/RMF.FITS} & chkey ANCRFILE ${files//SRC_SP.FITS/ARF.FITS} & exit" #group min 20 & exit"
+			grppha ${files} !${files//SRC_SP.FITS/GRP_binned.FITS} comm="chkey BACKFILE ${files//SRC_SP.FITS/BKG_SP.FITS} & chkey RESPFILE ${files//SRC_SP.FITS/RMF.FITS} & chkey ANCRFILE ${files//SRC_SP.FITS/ARF.FITS} & group min 20 & exit"
 		done
-	for files in *SRC_SP_QUITE.FITS
-		do	grppha ${files} !${files//SRC_SP_QUITE.FITS/GRP_QUITE.FITS} comm="chkey BACKFILE ${files//SRC_SP_QUITE.FITS/BKG_SP_QUITE.FITS} & chkey RESPFILE ${files//SRC_SP_QUITE.FITS/RMF_QUITE.FITS} & chkey ANCRFILE ${files//SRC_SP_QUITE.FITS/ARF_QUITE.FITS} & group min 20 & exit"
+	for files in *SRC_SP_QUIET.FITS
+		do	grppha ${files} !${files//SRC_SP_QUIET.FITS/GRP_QUIET.FITS} comm="chkey BACKFILE ${files//SRC_SP_QUIET.FITS/BKG_SP_QUIET.FITS} & chkey RESPFILE ${files//SRC_SP_QUIET.FITS/RMF_QUIET.FITS} & chkey ANCRFILE ${files//SRC_SP_QUIET.FITS/ARF_QUIET.FITS} & exit" #group min 20 & exit"
+			grppha ${files} !${files//SRC_SP_QUIET.FITS/GRP_QUIET_binned.FITS} comm="chkey BACKFILE ${files//SRC_SP_QUIET.FITS/BKG_SP_QUIET.FITS} & chkey RESPFILE ${files//SRC_SP_QUIET.FITS/RMF_QUIET.FITS} & chkey ANCRFILE ${files//SRC_SP_QUIET.FITS/ARF_QUIET.FITS} & group min 20 & exit"
 		done
 	for files in *SRC_SP_PHASE*
-	do	#grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC_SP/BKG_SP} & chkey RESPFILE ${files//SRC_SP/SRC_RMF} & chkey ANCRFILE ${files//SRC_SP/SRC_ARF} & group min 20 & exit !${files//SRC_SP/GRP}"
+	do	grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC_SP/BKG_SP} & chkey RESPFILE ${files//SRC_SP/RMF} & chkey ANCRFILE ${files//SRC_SP/ARF} & exit" #group min 20 & exit !${files//SRC_SP/GRP}"
+		grppha $files !${files//SRC_SP/GRP_binned} comm="chkey BACKFILE ${files//SRC_SP/BKG_SP} & chkey RESPFILE ${files//SRC_SP/RMF} & chkey ANCRFILE ${files//SRC_SP/ARF} & group min 20 & exit"
 		#${files%_SRC_SP*}.FITS
-		grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC_SP/BKG_SP} & chkey RESPFILE ${files%_SRC_SP*}_RMF.FITS & chkey ANCRFILE ${files%_SRC_SP*}_ARF.FITS & group min 20 & exit !${files//SRC_SP/GRP}"
+		#grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC_SP/BKG_SP} & chkey RESPFILE ${files%_SRC_SP*}_RMF.FITS & chkey ANCRFILE ${files%_SRC_SP*}_ARF.FITS & group min 20 & exit !${files//SRC_SP/GRP}"
 	done
 	for files in *SRC_SP_F_*
-	 do	grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC/BKG} & chkey RESPFILE ${files/SRC_SP_F/RMF_F} & chkey ANCRFILE ${files/SRC_SP_F/ARF_F} & group min 20 & exit !${files//SRC_SP/GRP}"
+	 do	grppha $files !${files//SRC_SP/GRP} comm="chkey BACKFILE ${files//SRC/BKG} & chkey RESPFILE ${files/SRC_SP_F/RMF_F} & chkey ANCRFILE ${files/SRC_SP_F/ARF_F} & exit" #group min 20 & exit !${files//SRC_SP/GRP}"
+	 	grppha $files !${files//SRC_SP/GRP_binned} comm="chkey BACKFILE ${files//SRC/BKG} & chkey RESPFILE ${files/SRC_SP_F/RMF_F} & chkey ANCRFILE ${files/SRC_SP_F/ARF_F} & group min 20 & exit "
 	 done
 }
 
@@ -2271,39 +2420,44 @@ function grouper(){
 #============================================================================================================================================
 function copier(){
 	set +e
-	for files in *SRC_SP.FITS
-	do	cp $files $pdir/analysis/$files
-		cp ${files//SRC_SP.FITS/BKG_SP.FITS} $pdir/analysis/${files//SRC_SP.FITS/BKG_SP.FITS}
-		cp ${files//SRC_SP.FITS/RMF.FITS} $pdir/analysis/${files//SRC_SP.FITS/RMF.FITS}
-		cp ${files//SRC_SP.FITS/ARF.FITS} $pdir/analysis/${files//SRC_SP.FITS/ARF.FITS}
-	#src=$(ls *SRC_SP.FITS )
-	#cp $src $pdir/analysis/$src
-	#bkg=$(ls *BKG_SP.FITS )
-	#cp $bkg $pdir/analysis/$bkg
-	#rmf=$(ls *RMF.FITS )
-	#cp $rmf $pdir/analysis/$rmf	
-	#arf=$(ls *ARF.FITS )
-	#cp $arf $pdir/analysis/$arf	
-	done
-	for files in *SRC_SP_QUITE.FITS
-	do	cp $files $pdir/analysis/$files
-		cp ${files//SRC_SP_QUITE.FITS/BKG_SP_QUITE.FITS} $pdir/analysis/${files//SRC_SP_QUITE.FITS/BKG_SP_QUITE.FITS}
-		cp ${files//SRC_SP_QUITE.FITS/RMF_QUITE.FITS} $pdir/analysis/${files//SRC_SP_QUITE.FITS/RMF_QUITE.FITS}
-		cp ${files//SRC_SP_QUITE.FITS/ARF_QUITE.FITS} $pdir/analysis/${files//SRC_SP_QUITE.FITS/ARF_QUITE.FITS}
-	done
-	for files in *SRC_SP_PHASE*
-	do	cp $files $pdir/analysis/$files
-		cp ${files//SRC_SP/BKG_SP} $pdir/analysis/${files//SRC_SP/BKG_SP}
-		cp ${files//SRC_SP/SRC_RMF} $pdir/analysis/${files//SRC_SP/SRC_RMF}
-		cp ${files//SRC_SP/SRC_ARF} $pdir/analysis/${files//SRC_SP/SRC_ARF}
+	pdir=$1
+	cp *SP*.FITS $pdir/analysis/
+	cp *RMF*.FITS $pdir/analysis/
+	cp *ARF*.FITS $pdir/analysis/
 	
-	done
-	 for files in *SRC_SP_F_*
-	 do	cp $files $pdir/analysis/$files
-		cp ${files//SRC/BKG} $pdir/analysis/${files//SRC/BKG}
-		cp ${files/SRC_SP_F/RMF_F} $pdir/analysis/${files/SRC_SP_F/RMF_F}
-		cp ${files/SRC_SP_F/ARF_F} $pdir/analysis/${files/SRC_SP_F/ARF_F}
-	 done
+	#for files in *SRC_SP.FITS
+	#do	cp $files $pdir/analysis/$files
+	#	cp ${files//SRC_SP.FITS/BKG_SP.FITS} $pdir/analysis/${files//SRC_SP.FITS/BKG_SP.FITS}
+	#	cp ${files//SRC_SP.FITS/RMF.FITS} $pdir/analysis/${files//SRC_SP.FITS/RMF.FITS}
+	#	cp ${files//SRC_SP.FITS/ARF.FITS} $pdir/analysis/${files//SRC_SP.FITS/ARF.FITS}
+	##src=$(ls *SRC_SP.FITS )
+	##cp $src $pdir/analysis/$src
+	##bkg=$(ls *BKG_SP.FITS )
+	##cp $bkg $pdir/analysis/$bkg
+	##rmf=$(ls *RMF.FITS )
+	##cp $rmf $pdir/analysis/$rmf	
+	##arf=$(ls *ARF.FITS )
+	##cp $arf $pdir/analysis/$arf	
+	#done
+	#for files in *SRC_SP_QUIET.FITS
+	#do	cp $files $pdir/analysis/$files
+	#	cp ${files//SRC_SP_QUIET.FITS/BKG_SP_QUIET.FITS} $pdir/analysis/${files//SRC_SP_QUIET.FITS/BKG_SP_QUIET.FITS}
+	#	cp ${files//SRC_SP_QUIET.FITS/RMF_QUIET.FITS} $pdir/analysis/${files//SRC_SP_QUIET.FITS/RMF_QUIET.FITS}
+	#	cp ${files//SRC_SP_QUIET.FITS/ARF_QUIET.FITS} $pdir/analysis/${files//SRC_SP_QUIET.FITS/ARF_QUIET.FITS}
+	#done
+	#for files in *SRC_SP_PHASE*
+	#do	cp $files $pdir/analysis/$files
+	#	cp ${files//SRC_SP/BKG_SP} $pdir/analysis/${files//SRC_SP/BKG_SP}
+	#	cp ${files//SRC_SP/SRC_RMF} $pdir/analysis/${files//SRC_SP/SRC_RMF}
+	#	cp ${files//SRC_SP/SRC_ARF} $pdir/analysis/${files//SRC_SP/SRC_ARF}
+	
+	#done
+	 #for files in *SRC_SP_F_*
+	 #do	cp $files $pdir/analysis/$files
+	#	cp ${files//SRC/BKG} $pdir/analysis/${files//SRC/BKG}
+	#	cp ${files/SRC_SP_F/RMF_F} $pdir/analysis/${files/SRC_SP_F/RMF_F}
+	#	cp ${files/SRC_SP_F/ARF_F} $pdir/analysis/${files/SRC_SP_F/ARF_F}
+	 #done
 	
 }
 
@@ -2315,10 +2469,10 @@ function analysis_maker(){
 	[ -d analysis ] || mkdir analysis
 	pdir=$(pwd)
 	cd pn 
-	copier;
+	copier $pdir;
 	cd ..
 	cd mos
-	copier;
+	copier $pdir;
 	cd ..
 	cd analysis
 	grouper;
@@ -2371,7 +2525,7 @@ fi
 			echo "lightcurves------------------------------done---------------------------------------"
 		else	nah=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want lightcurves?"; echo $?)
 			if [ $nah = 0 ]
-			then	lightcurves_gui;
+			then	lightcurves_gui 1;
 			fi
 			echo "lightcurves------------------------------done---------------------------------------"
 		fi
@@ -2402,17 +2556,17 @@ function quite_lightcurve_spectra(){
 				tabgtigen table=$files gtiset=gti.ds expression="$Timefil"
 				if [ $1 = 0 ]
 			
-				then	evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_SRC_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_BKG_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_BKG_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				else	evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_SRC_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
-				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_BKG_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_BKG_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+				then	evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_SRC_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_BKG_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_BKG_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				else	evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_SRC_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR.FITS/_BKG_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR.FITS/_BKG_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
 				fi
-				rmfgen rmfset="${files//_LC_CORR.FITS/_RMF_QUITE.FITS}" spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUITE.FITS}"
-				arfgen arfset="${files//_LC_CORR.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUITE.FITS}" withrmfset=yes rmfset="${files//_IM.FITS/_RMF.FITS}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes
-				evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				epiclccorr srctslist="${files//_LC_CORR.FITS/_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR.FITS/_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				dsplot table="${files//_LC_CORR.FITS/_LC_CORR_QUITE.FITS}" x=TIME y=RATE &
+				rmfgen rmfset="${files//_LC_CORR.FITS/_RMF_QUIET.FITS}" spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUIET.FITS}"
+				arfgen arfset="${files//_LC_CORR.FITS/_ARF_QUIET.FITS}" spectrumset="${files//_LC_CORR.FITS/_SRC_SP_QUIET.FITS}" withrmfset=yes rmfset="${files//_IM.FITS/_RMF.FITS}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes
+				evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="gti(gti.ds,TIME)"
+				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="gti(gti.ds,TIME)"
+				epiclccorr srctslist="${files//_LC_CORR.FITS/_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR.FITS/_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				dsplot table="${files//_LC_CORR.FITS/_LC_CORR_QUIET.FITS}" x=TIME y=RATE &
 				echo "Do you want soft and hard light curves sapparately?"
 				read lcanss
 				if [ $lcanss = y ]
@@ -2425,14 +2579,15 @@ function quite_lightcurve_spectra(){
 					echo "Enter upper bound for hard light curve"
 					read highhard
 					echo "Generating soft and  hard light curves sapparately..."
-					evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SOFT_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
-				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SOFT_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
-				epiclccorr srctslist="${files//_LC_CORR.FITS/_SOFT_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_SOFT_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR.FITS/_SOFT_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				dsplot table="${files//_LC_CORR.FITS/_SOFT_LC_CORR_QUITE.FITS}" x=TIME y=RATE &	
-				evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_HARD_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
-				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_HARD_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
-				epiclccorr srctslist="${files//_LC_CORR.FITS/_HARD_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_HARD_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR.FITS/_HARD_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				dsplot table="${files//_LC_CORR.FITS/_HARD_LC_CORR_QUITE.FITS}" x=TIME y=RATE &	
+					evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SOFT_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_SOFT_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+				epiclccorr srctslist="${files//_LC_CORR.FITS/_SOFT_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_SOFT_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR.FITS/_SOFT_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				dsplot table="${files//_LC_CORR.FITS/_SOFT_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+				evselect table="${files//_LC_CORR.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_HARD_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+				evselect table="${files//_LC_CORR.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR.FITS/_HARD_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=100 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+				epiclccorr srctslist="${files//_LC_CORR.FITS/_HARD_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR.FITS/.FITS}" outset="${files//_LC_CORR.FITS/_HARD_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR.FITS/_HARD_BKG_LC.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				dsplot table="${files//_LC_CORR.FITS/_HARD_LC_CORR_QUIET.FITS}" x=TIME y=RATE &
+				else	echo "Alright! skipping this step."	
 				fi
 			else continue
 			fi
@@ -2457,25 +2612,37 @@ function quite_lightcurve_spectra_gui(){
 			then	timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
 				Timefil=$(python $timecode $files)
 				tabgtigen table=$files gtiset=gti.ds expression="$Timefil"
+				bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				
 				zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
+				echo $Timefil>quiet_time.filter
 				if [ $1 = 0 ]
 			
 				then	set -e
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				else	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_QUITE.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
-				fi
-				backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
-				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUITE.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
-				
-				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUITE.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUITE.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_QUITE.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
-				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				dsplot table="${files//_LC_CORR100.FITS/_LC_CORR_QUITE.FITS}" x=TIME y=RATE &
-				lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+					#source expression for mos...
+					if [ $(ls *pileup.txt | wc -l) = 0 ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+						echo "reading file:${files//_LC_CORR100.FITS/_pileup.txt} "
+						more ${files//_LC_CORR100.FITS/_pileup.txt}
+				 		innera=$(python $pileucode ${files//_LC_CORR100.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+				bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'mos' 'no')
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				evselect table="${files//_LC_CORR100.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+				evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+				evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
 				if [ $lcanss = 0 ]
 				then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
 					lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
@@ -2483,77 +2650,469 @@ function quite_lightcurve_spectra_gui(){
 					lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
 					highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
 					set -e
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowsoft:$highsoft])"
-					evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowsoft:$highsoft])"
-					epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
-					dsplot table="${files//_LC_CORR100.FITS/_SOFT_LC_CORR_QUITE.FITS}" x=TIME y=RATE &	
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_SRC_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowhard:$highhard])"
-					evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_BKG_LC_QUITE.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowhard:$highhard])"
-					epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_SRC_LC_QUITE.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_LC_CORR_QUITE.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_BKG_LC_QUITE.FITS}" withbkgset=yes applyabsolutecorrections=yes
-					dsplot table="${files//_LC_CORR100.FITS/_HARD_LC_CORR_QUITE.FITS}" x=TIME y=RATE &	
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+					epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+					epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
 				fi
-			else continue
-			fi
-		done	
-	fi
-set +e
-}
-
-function flare_lightcurve_spectra_gui(){
-	imcheck=$(ls *LC_CORR100.FITS | wc -l)
-	if [ $imcheck = 0 ]
-	then 	zenity --title "XMM-SCRIPT" --notification --text "No lightcurves to edit..."
-	else	for files in *LC_CORR100.FITS
-		do	[[ $files == *HARD* ]] && continue
-			[[ $files == *SOFT* ]] && continue
-			dsplot table=$files x=TIME y=RATE.ERROR
-			qwer=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want to extract flare from lightcurve?"; echo $?)
-			if [ $qwer = 0 ]
-			then	postfix=$(zenity --title "XMM-SCRIPT" --entry --text "Postfix for filename")
-				timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
-				Timefil=$(python $timecode $files)
-				tabgtigen table=$files gtiset=gti.ds expression="$Timefil"
-				zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
-				if [ $1 = 0 ]
-			
-				then	set -e
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
-				else	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
-				fi
-				backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
-				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
 				
-				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
-				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
-				evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
-				epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
-				set -e
-				dsplot table="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &
-				lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
-				if [ $lcanss = 0 ]
+				
+				
+				
+				
+				
+				
+				
+				
+				else	if [ $(ls *pileup.txt | wc -l) = 0 ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+					bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'pn' 'no')
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_QUIET.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUIET.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+					epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+					if [ $lcanss = 0 ]
 				then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
 					lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
 					highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
 					lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
 					highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_SRC_LC_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
-					evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_BKG_LC_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
-					epiclccorr srctslist="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_SRC_LC_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_LC_CORR_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_BKG_LC_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
-					dsplot table="${files//_LC_CORR100.FITS/_${lowsoft}_${highsoft}_SOFT_LC_CORR_$postfix.FITS}" x=TIME y=RATE &	
-					evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_SRC_LC_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
-					evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_BKG_LC_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
-					epiclccorr srctslist="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_SRC_LC_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_LC_CORR_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_BKG_LC_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
-					dsplot table="${files//_LC_CORR100.FITS/_${lowhard}_${highhard}_HARD_LC_CORR_$postfix.FITS}" x=TIME y=RATE &	
+					set -e
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+					epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+					evselect table="${files//_LC_CORR100.FITS/.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+					epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+					dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+					fi
+				
+				
+				
+				
+				
 				fi
+				backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUIET.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_QUIET.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
+				rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_QUIET.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUIET.FITS}"
+				arfgen arfset="${files//_LC_CORR100.FITS/_ARF_QUIET.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_QUIET.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_QUIET.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
+				
+
+
+				#evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
+				#evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)"
+				#epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				#dsplot table="${files//_LC_CORR100.FITS/_LC_CORR_QUIET.FITS}" x=TIME y=RATE &
+				#lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+				#if [ $lcanss = 0 ]
+				#then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+				#	lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+				#	highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+				#	lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+				#	highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+				#	set -e
+				#	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowsoft:$highsoft])"
+				#	evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowsoft:$highsoft])"
+				#	epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				#	dsplot table="${files//_LC_CORR100.FITS/_SOFT_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+				#	evselect table="${files//_LC_CORR100.FITS/_SRC_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_SRC_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowhard:$highhard])"
+				#	evselect table="${files//_LC_CORR100.FITS/_BKG_SP_FILT.FITS}" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_BKG_LC_QUIET.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="gti(gti.ds,TIME)&&(PI in [$lowhard:$highhard])"
+				#	epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_SRC_LC_QUIET.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_LC_CORR_QUIET.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_BKG_LC_QUIET.FITS}" withbkgset=yes applyabsolutecorrections=yes
+				#	dsplot table="${files//_LC_CORR100.FITS/_HARD_LC_CORR_QUIET.FITS}" x=TIME y=RATE &	
+				#fi
 			else continue
 			fi
 		done	
 	fi
 set +e
 }
+function flare_lightcurve_spectra_gui(){
+	imcheck=$(ls *LC_CORR100.FITS | wc -l)
+	if [ $imcheck = 0 ]
+	then 	zenity --title "XMM-SCRIPT" --notification --text "No lightcurves to edit..."
+	else	if [ "$(ls *LC_CORR_QUIET.FITS|wc -l)" == 0 ]
+		then	for files in *LC_CORR100.FITS
+			do	[[ $files == *HARD* ]] && continue
+				[[ $files == *SOFT* ]] && continue
+				dsplot table=$files x=TIME y=RATE.ERROR
+				qwer=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want to extract flare from lightcurve?"; echo $?)
+				if [ $qwer = 0 ]
+				then	postfix=$(zenity --title "XMM-SCRIPT" --entry --text "Postfix for filename")
+					timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
+					Timefil=$(python $timecode $files)
+					tabgtigen table=$files gtiset=gti.ds expression="$Timefil"
+					bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				
+					zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
+					echo $Timefil>F_$postfix_time.filter
+					if [ $1 = 0 ]
+			
+					then	set -e
+						#source expression for mos...
+						if [ $(ls *pileup.txt | wc -l) = 0 ]
+						then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+							Xcord=${array[0]}
+							Ycord=${array[1]}
+							areaPix=${array[2]}
+							srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+						else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+							echo "reading file:${files//_LC_CORR100.FITS/_pileup.txt} "
+							more ${files//_LC_CORR100.FITS/_pileup.txt}
+					 		innera=$(python $pileucode ${files//_LC_CORR100.FITS/_pileup.txt})
+					 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+							Xcord=${array[0]}
+							Ycord=${array[1]}
+							areaPix=${array[2]}
+							srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+						fi
+						bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'mos' 'no')
+						echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+						cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+						evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+						evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+						evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+						evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+						epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+						if [ $lcanss = 0 ]
+						then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+							lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+							highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+							lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+							highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+							set -e
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+						fi			
+					else	if [ $(ls *pileup.txt | wc -l) = 0 ]
+						then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+							Xcord=${array[0]}
+							Ycord=${array[1]}
+							areaPix=${array[2]}
+							srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+						else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+					 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+					 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+							Xcord=${array[0]}
+							Ycord=${array[1]}
+							areaPix=${array[2]}
+							srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+						fi
+						bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'pn' 'no')
+						echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+						cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+						evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+						evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+						evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+						evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+						epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+						lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+						if [ $lcanss = 0 ]
+						then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+							lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+							highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+							lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+							highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+							set -e
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+						fi
+					fi
+					backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+					backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
+					rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
+					arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
+				
+	
+				else coninue
+				fi
+			done
+		else	for files in *LC_CORR100.FITS
+			do	[[ $files == *HARD* ]] && continue
+				[[ $files == *SOFT* ]] && continue
+				echo "Quiet lightcurve exist which means flaring regions can be extracted from Quiet lightcurve."
+				zenity --title "XMM-SCRIPT" --notification --text "Quiet lightcurve exist which means flaring regions can be extracted from Quiet lightcurve."
+				cfd=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Quiet lightcurve exist which means flaring regions can be extracted from Quiet lightcurve. Do you want to use time information available in quiet lightcurve? (if no you can choose flaring region by your own)"; echo $?)
+				if [ $cfd = 0 ]
+				then	zenity --title "XMM-SCRIPT" --notification --text "Alright extracting flaring information from quiescent lightcurve."
+					s=$(find . -name '*LC_CORR_QUIET.FITS' | head -n 1)
+					cp $s gti_test.fits
+					fdelhdu gti_test.fits+1 N Y
+					fdelhdu gti_test.fits+2 N Y
+					the_code=$(readlink -f ~/bin/xmm_script_flare_expression_maker.py)
+					flares=($(python $the_code gti_test.fits))
+					flarenumber=1
+					for i in $(echo ${flares[@]})
+					do	echo "do extract flaring spectra and lightcurve..."
+						flare_expression="(TIME IN $i)"
+						#make gti for flare
+						#zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $flare_expression"
+						ques=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Time filter expression used is: $flare_expression \nextract flare for this region?"; echo $?)
+						if [ $ques != 0 ]
+						then continue
+						fi
+						tabgtigen table=$files gtiset=gti.ds expression="$flare_expression"
+						bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				
+						
+						if [ $1 = 0 ]
+			
+						then	set -e
+						#source expression for mos...
+							if [ "$(ls *pileup.txt | wc -l)" == "0" ]
+							then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+								Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+							else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+								echo "reading file:${files//_LC_CORR100.FITS/_pileup.txt} "
+								more ${files//_LC_CORR100.FITS/_pileup.txt}
+					 			innera=$(python $pileucode ${files//_LC_CORR100.FITS/_pileup.txt})
+					 			while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+								Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+							fi
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+							bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'mos' 'no')
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$flarenumber.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$flarenumber.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$flarenumber.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$flarenumber.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+							if [ $lcanss = 0 ]
+							then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+								lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+								highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+								lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+								highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+								set -e
+								echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+								cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$flarenumber.FITS}" x=TIME y=RATE &	
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$flarenumber.FITS}" x=TIME y=RATE &	
+							fi			
+						else	if [ $(ls *pileup.txt | wc -l) = 0 ]
+							then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+								Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+							else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+						 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+						 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+								Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+							fi
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+							bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'pn' 'no')
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$flarenumber.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$flarenumber.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$flarenumber.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$flarenumber.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+							if [ $lcanss = 0 ]
+							then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+								lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+								highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+								lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+								highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+								set -e
+								echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+								cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$flarenumber.FITS}" x=TIME y=RATE &	
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$flarenumber.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$flarenumber.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$flarenumber.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$flarenumber.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$flarenumber.FITS}" x=TIME y=RATE &	
+							fi
+						fi
+						backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$flarenumber.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+						backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$flarenumber.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
+						rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$flarenumber.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$flarenumber.FITS}"
+						arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$flarenumber.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$flarenumber.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$flarenumber.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
+						flarenumber=$((flarenumber+1))
+					done
+				
+				else	for files in *LC_CORR100.FITS
+					do	[[ $files == *HARD* ]] && continue
+						[[ $files == *SOFT* ]] && continue
+						dsplot table=$files x=TIME y=RATE.ERROR
+						qwer=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want to extract flare from lightcurve?"; echo $?)
+						if [ $qwer = 0 ]
+						then	postfix=$(zenity --title "XMM-SCRIPT" --entry --text "Postfix for filename")
+							timecode=$(readlink -f ~/bin/time_fil_expre_maker.py)
+							Timefil=$(python $timecode $files)
+							tabgtigen table=$files gtiset=gti.ds expression="$Timefil"
+							bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				
+							zenity --title "XMM-SCRIPT" --width 500 --height 500 --info --text  "Time filter expression used is: $Timefil"
+							echo $Timefil>F_$postfix_time.filter
+							if [ $1 = 0 ]
+				
+							then	set -e
+						#source expression for mos...
+								if [ $(ls *pileup.txt | wc -l) = 0 ]
+								then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+									Xcord=${array[0]}
+									Ycord=${array[1]}
+									areaPix=${array[2]}
+									srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+								else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+									echo "reading file:${files//_LC_CORR100.FITS/_pileup.txt} "
+									more ${files//_LC_CORR100.FITS/_pileup.txt}
+						 			innera=$(python $pileucode ${files//_LC_CORR100.FITS/_pileup.txt})
+						 			while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+									Xcord=${array[0]}
+									Ycord=${array[1]}
+									areaPix=${array[2]}
+									srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+								fi
+								echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+								cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+								bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'mos' 'no')
+								evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+								evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+								if [ $lcanss = 0 ]
+								then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+								lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+								highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+								lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+								highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+							set -e
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+								fi			
+							else	if [ $(ls *pileup.txt | wc -l) = 0 ]
+							then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+								Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+							else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+					 				innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+					 			while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_LC_CORR100.FITS/_source.region})
+								Xcord=${array[0]}
+									Ycord=${array[1]}
+								areaPix=${array[2]}
+								srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+							fi
+							echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+							cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+							bkgexpre=$(python $bkgcode ${files//_LC_CORR100.FITS/_background.region} 'pn' 'no')
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_SRC_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+							evselect table="tempfile.fits" energycolumn="PI" withfilteredset=yes filteredset="${files//_LC_CORR100.FITS/_BKG_SP_FILT_F_$postfix.FITS}" keepfilteroutput=yes filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre"
+							evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&gti(gti.ds,TIME)"
+							epiclccorr srctslist="${files//_LC_CORR100.FITS/_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+							lcanss=$(zenity --title "XMM-SCRIPT" --width 500 --height 500 --question --text "Do you want soft and hard light curves sapparately?"; echo $?)
+							if [ $lcanss = 0 ]
+							then	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for soft hard lightcurves" --add-entry="Lower bound for soft LC" --add-entry="Upper bound for soft LC" --add-entry="Lower bound for hard LC" --add-entry="Upper bound for hard LC"`
+								lowsoft=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
+								highsoft=$(awk -F'|' '{print $2}' <<<$RRVALUE);
+								lowhard=$(awk -F'|' '{print $3}' <<<$RRVALUE);
+								highhard=$(awk -F'|' '{print $4}' <<<$RRVALUE);
+								set -e
+								echo "cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits"
+								cp ${files//_LC_CORR100.FITS/.FITS} tempfile.fits
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowsoft:$highsoft])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowsoft:$highsoft])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes
+								dsplot table="${files//_LC_CORR100.FITS/_SOFT_${lowsoft}_${highsoft}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$srcexpre&&(PI in [$lowhard:$highhard])"
+								evselect table="tempfile.fits" withrateset=yes rateset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" maketimecolumn=yes timecolumn=TIME timebinsize=10 makeratecolumn=yes expression="$bkgexpre&&(PI in [$lowhard:$highhard])&&gti(gti.ds,TIME)"
+								epiclccorr srctslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_SRC_LC_F_$postfix.FITS}" eventlist="${files//_LC_CORR100.FITS/.FITS}" outset="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" bkgtslist="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_BKG_LC_F_$postfix.FITS}" withbkgset=yes applyabsolutecorrections=yes	
+								dsplot table="${files//_LC_CORR100.FITS/_HARD_${lowhard}_${highhard}_LC_CORR_F_$postfix.FITS}" x=TIME y=RATE &	
+							fi
+						fi
+					backscale spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+					backscale spectrumset="${files//_LC_CORR100.FITS/_BKG_SP_F_$postfix.FITS}" badpixlocation=${files//_LC_CORR100.FITS/.FITS}
+				
+					rmfgen rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}"
+					arfgen arfset="${files//_LC_CORR100.FITS/_ARF_F_$postfix.FITS}" spectrumset="${files//_LC_CORR100.FITS/_SRC_SP_F_$postfix.FITS}" withrmfset=yes rmfset="${files//_LC_CORR100.FITS/_RMF_F_$postfix.FITS}" withbadpixcorr=yes badpixlocation="${files//_LC_CORR100.FITS/.FITS}"
+				else coninue
+				fi
+				
+				done	
+					
+				
+			
+			
+		fi
+		done	
+	fi
+	fi
+set +e
+}
+
+
 
 #function phase_stamp_to_lightcurves(){
 #	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for phase resoolved spectra" --add-entry="Reference epoch(UTC)(e.g. ccyy-mm-ddThh:mm:ss)" --add-entry="Phase at epoch" --add-entry="frequency (i.e. 1/Period(in sec)) (Hz)" --add-entry="Frequency dot"`
@@ -3060,7 +3619,8 @@ function rgs_pileup_checker(){
 #-------------------------for phase resolved spectra------------------------ 0 means mos
 #---------------------------------------------------------------------------
 function phase_resolved_spectra(){
-	rm *PHASE*
+	[[ "$(ls *IM.FITS|wc -l)" == "0" ]] && echo "No image files found skipping phase resolved spectral generation..." && return 1
+	[[ $(ls *PHASE*|wc -l) != 0 ]] && rm *PHASE*
 	echo "we are in phase function and in directory $(pwd)"
 	RRVALUE=`zenity --title "XMM-SCRIPT" --width 500 --height 500 --forms  --text  "Parameters for phase resoolved spectra" --add-entry="Reference epoch(UTC)(e.g. ccyy-mm-ddThh:mm:ss)" --add-entry="Phase at epoch" --add-entry="frequency (i.e. 1/Period(in sec)) (Hz)" --add-entry="Frequency dot" --add-entry="Phase interval in which you want spectra" --add-entry="Phase to start with in spectral analysis"`
 	epoch=$(awk -F'|' '{print $1}' <<<$RRVALUE);    
@@ -3069,133 +3629,186 @@ function phase_resolved_spectra(){
 	frequencydot=$(awk -F'|' '{print $4}' <<<$RRVALUE);
 	phaseinterval=$(awk -F'|' '{print $5}' <<<$RRVALUE);
 	currentphase=$(awk -F'|' '{print $6}' <<<$RRVALUE);
-	#phasecalc --tables=PN_1_UFILT_SRC_SP_FILT.FITS:EVENTS --frequency=3.7512888933467406e-05 --epoch=2006-10-17T15:18:22  --frequencydot=0 phase=0 -V 4
-	for files in *FILT.FITS
-	do	set -e
-		echo "phasecalc --tables=$files:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4"
-		phasecalc --tables=$files:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
-		expos=($(python ~/bin/for_phasecalc.py $files | tr -d '[],'))
-		for (( i=0; i<=`expr ${#expos[@]} - 1`; i++))
-		do	echo "phasecalc --tables=$files:${expos[$i]} frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4"
-			phasecalc --tables=$files:${expos[$i]} frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
+	sa=$(ls *QUIET* |wc -l)
+	if [ $sa != 0 ]
+	then	echo "we will do phase calculations on quiet eventlist"
+		for files in *IM.FITS
+		do	s=$(find . -name '*LC_CORR_QUIET.FITS' | head -n 1)
+			cp $s gti_test.fits
+			fdelhdu gti_test.fits+1 N Y
+			fdelhdu gti_test.fits+2 N Y
+			fdelhdu gti_test.fits+2 N Y
+			hdul_code=$(readlink -f ~/bin/hdul_name_changer_for_xmm_script.py)
+			timefil=$(python $hdul_code gti_test.fits)
+			rm gti_test.fits
+			tabgtigen table=${files//_IM.FITS/_LC_CORR_QUIET.FITS} gtiset=gti_quiet.ds expression="$timefil"
+			evselect table=${files//_IM.FITS/.FITS} withfilteredset=yes expression="GTI(gti_quiet.ds,TIME)" filteredset=${files//_IM.FITS/_quiet.FITS} filtertype=expression keepfilteroutput=yes updateexposure=yes filterexposure=yes
+			phasecalc --tables=${files//_IM.FITS/_quiet.FITS}:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
+			zenity --title "XMM-SCRIPT" --notification --text "generating GTI for relavant phases"
+			phaselimit="1.0"
+			veryfirstcurrentphase=$(bc <<< "1.0 + $currentphase - 1.0")
+			while [ "$(bc <<< "$currentphase < $phaselimit")" == "1"  ]
+			do	phasup=$(bc <<< "$currentphase+$phaseinterval")
+				if [ "$(bc <<< "$phasup > $phaselimit")" == "1" ]   # to stop the while loop
+				then	phasup=$(bc <<< "$phasup - 1.0")
+				fi
+				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]               #making gti file
+				then	tabgtigen table=${files//_IM.FITS/_quiet.FITS}:EVENTS gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
+				else	tabgtigen table=${files//_IM.FITS/_quiet.FITS}:EVENTS gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
+				fi
+				#getting source and background regions
+				bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				if [ "$1" == "0" ]   #0 means mos
+				then	set -e
+					#source expression for mos...
+					if [ "$(ls *pileup.txt | wc -l)" == "0" ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+						echo "reading file: ${files//_IM.FITS/_pileup.txt}"
+						more ${files//_IM.FITS/_pileup.txt}
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+					bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'mos' 'no')
+					cp ${files//_IM.FITS/_quiet.FITS} tempfile.fits
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_QUIET_SRC_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999" 
+					backscale spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_QUIET_BKG_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_IM/_QUIET_BKG_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//_IM/_QUIET_BKG_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					rmfgen rmfset="${files//_IM/_QUIET_RMF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}"
+					arfgen arfset="${files//_IM/_QUIET_ARF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" withrmfset=yes rmfset="${files//_IM/_QUIET_RMF_PHASE$currentphase-$phasup}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes setbackscale=yes sourcecoords=pos sourcex=$Xcord sourcey=$Ycord
+				else	set -e
+					#source expression for pn...
+					if [ $(ls *pileup.txt | wc -l) = 0 ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+					bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'pn' 'no')
+					cp ${files//_IM.FITS/_quiet.FITS} tempfile.fits
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_QUIET_SRC_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_QUIET_BKG_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_IM/_QUIET_BKG_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//_IM/_QUIET_BKG_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					rmfgen rmfset="${files//_IM/_QUIET_RMF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}"
+					arfgen arfset="${files//_IM/_QUIET_ARF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_QUIET_SRC_SP_PHASE$currentphase-$phasup}" withrmfset=yes rmfset="${files//_IM/_QUIET_RMF_PHASE$currentphase-$phasup}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes setbackscale=yes sourcecoords=pos sourcex=$Xcord sourcey=$Ycord
+				fi
+			currentphase=$(bc <<< "$currentphase+$phaseinterval")
+	    		if [ "$(bc <<< "$currentphase > $phaselimit")" == "1" ]
+			then	currentphase=$(bc <<< "$currentphase - 1.0")
+			fi
+			if [ "$currentphase" == "$veryfirstcurrentphase" ]
+			then	break
+			fi
+			done	
 		done
-			set +e
-	done
-	for files in *FILT_QUITE.FITS
-	do	set -e
-		echo "phasecalc --tables=$files:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4"
-		phasecalc --tables=$files:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
-		expos=($(python ~/bin/for_phasecalc.py $files | tr -d '[],'))
-		for (( i=0; i<=`expr ${#expos[@]} - 1`; i++))
-		do	echo "phasecalc --tables=$files:${expos[$i]} frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4"
-			phasecalc --tables=$files:${expos[$i]} frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
+	
+		
+	else	echo "we will do phase calculations on standard eventlist"
+		for files in *IM.FITS
+		do	phasecalc --tables=${files//_IM.FITS/.FITS}:EVENTS --frequency=$frequency --epoch=$epoch  --frequencydot=$frequencydot phase=$phaseepoch -V 4
+			zenity --title "XMM-SCRIPT" --notification --text "generating GTI for relavant phases"
+			phaselimit="1.0"
+			veryfirstcurrentphase=$(bc <<< "1.0 + $currentphase - 1.0")
+			while [ "$(bc <<< "$currentphase < $phaselimit")" == "1"  ]
+			do	phasup=$(bc <<< "$currentphase+$phaseinterval")
+				if [ "$(bc <<< "$phasup > $phaselimit")" == "1" ]   # to stop the while loop
+				then	phasup=$(bc <<< "$phasup - 1.0")
+				fi
+				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]               #making gti file
+				then	tabgtigen table=${files//_IM/}:EVENTS gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
+				else	tabgtigen table=${files//_IM/}:EVENTS gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
+				fi
+				#getting source and background regions
+				bkgcode=$(readlink -f ~/bin/bkg_multicircle_xmm.py)
+				if [ $1 = 0 ]   #0 means mos
+				then	set -e
+					#source expression for mos...
+					if [ $(ls *pileup.txt | wc -l) = 0 ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EM&&(PATTERN<=12)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+					bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'mos' 'no')
+					cp ${files//_IM.FITS/.FITS} tempfile.fits
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_SRC_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_BKG_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_IM/_BKG_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
+					backscale spectrumset="${files//_IM/_BKG_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					rmfgen rmfset="${files//_IM/_RMF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}"
+					arfgen arfset="${files//_IM/_ARF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" withrmfset=yes rmfset="${files//_IM/_RMF_PHASE$currentphase-$phasup}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes sourcecoords=pos sourcex=$Xcord sourcey=$Ycord
+				else	set -e
+					#source expression for pn...
+					if [ $(ls *pileup.txt | wc -l) = 0 ]
+					then	while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&& ((X,Y) IN circle($Xcord,$Ycord,$areaPix))&&gti(gti.ds,TIME)"
+					else	pileucode=$(readlink -f ~/bin/src_pileup_expression_xmm.py)
+				 		innera=$(python $pileucode ${files//_IM.FITS/_pileup.txt})
+				 		while read line ; do   array=($line); done < <(python ~/bin/src_circle_for_xmm_three_LCs.py ${files//_IM.FITS/_source.region})
+						Xcord=${array[0]}
+						Ycord=${array[1]}
+						areaPix=${array[2]}
+						srcexpre="#XMMEA_EP&&(PATTERN<=4)&&((X,Y) IN annulus($Xcord,$Ycord,$innera,$areaPix))&&gti(gti.ds,TIME)"
+					fi
+					bkgexpre=$(python $bkgcode ${files//_IM.FITS/_background.region} 'pn' 'no')
+					cp ${files//_IM.FITS/.FITS} tempfile.fits
+					echo "background is ${files//_IM.FITS/_background.region} and expression is: $bkgexpre"
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_SRC_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$srcexpre" withspectrumset=yes spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					evselect table="tempfile.fits" energycolumn="PI" withfilteredset=no filteredset="${files//_IM/_BKG_SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=no filtertype="expression" expression="$bkgexpre&&gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//_IM/_BKG_SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
+					backscale spectrumset="${files//_IM/_BKG_SP_PHASE$currentphase-$phasup}" badpixlocation=${files//_IM.FITS/.FITS}
+					
+					rmfgen rmfset="${files//_IM/_RMF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}"
+					arfgen arfset="${files//_IM/_ARF_PHASE$currentphase-$phasup}" spectrumset="${files//_IM/_SRC_SP_PHASE$currentphase-$phasup}" withrmfset=yes rmfset="${files//_IM/_RMF_PHASE$currentphase-$phasup}" withbadpixcorr=yes badpixlocation="${files//_IM.FITS/.FITS}" setbackscale=yes setbackscale=yes sourcecoords=pos sourcex=$Xcord sourcey=$Ycord
+				fi
+			currentphase=$(bc <<< "$currentphase+$phaseinterval")
+	    		if [ "$(bc <<< "$currentphase > $phaselimit")" == "1" ]
+			then	currentphase=$(bc <<< "$currentphase - 1.0")
+			fi
+			if [ "$currentphase" == "$veryfirstcurrentphase" ]
+			then	break
+			fi
+			done	
 		done
-			set +e
-	done
-	zenity --title "XMM-SCRIPT" --notification --text "generating GTI for relavant phases"
-	#currentphase="0.0"
-	phaselimit="1.0"
-	#increment="$phaseinterval"
-	veryfirstcurrentphase=$(bc <<< "1.0 + $currentphase - 1.0")
-	while [ "$(bc <<< "$currentphase < $phaselimit")" == "1"  ]
-	do	phasup=$(bc <<< "$currentphase+$phaseinterval")
-		if [ "$(bc <<< "$phasup > $phaselimit")" == "1" ]
-		then	phasup=$(bc <<< "$phasup - 1.0")
-		fi
-		if [ $(ls *QUITE.FITS | wc -l) = 0 ]
-		then	for files in *SRC_SP_FILT.FITS
-			do	echo "tabgtigen table=$files gtiset=gti.ds expression=\"(PHASE>=$currentphase||PHASE<$phasup)\" "
-				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]
-				then	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
-				else	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
-				fi
-				if [ $1 = 0 ]
-				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-				fi
-			done
-			for files in *BKG_SP_FILT.FITS
-			do	echo "tabgtigen table=$files gtiset=gti.ds expression=\"(PHASE>=$currentphase||PHASE<$phasup)\" "
-				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]
-				then	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
-				else	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
-				fi
-				#tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)" 
-				if [ $1 = 0 ]
-				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-				fi
-			done
-		
-		else	for files in *SRC_SP_FILT_QUITE.FITS
-			do	echo "tabgtigen table=$files gtiset=gti.ds expression=\"(PHASE>=$currentphase||PHASE<$phasup)\" "
-				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]
-				then	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
-				else	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
-				fi
-				if [ $1 = 0 ]
-				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_SRC_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-				fi
-			done
-			for files in *BKG_SP_FILT_QUITE.FITS
-			do	echo "tabgtigen table=$files gtiset=gti.ds expression=\"(PHASE>=$currentphase||PHASE<$phasup)\" "
-				if [ "$(bc <<< "$phasup < $currentphase")" == "1" ]
-				then	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase||PHASE<$phasup)"
-				else	tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)"
-				fi
-				#tabgtigen table=$files gtiset=gti.ds expression="(PHASE>=$currentphase&&PHASE<$phasup)" 
-				if [ $1 = 0 ]
-				then	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=11999"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="11999"
-				else	echo "evselect table="$files" energycolumn=\"PI\" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype=\"expression\" expression=\"gti(gti.ds,TIME)\" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax=20479"
-					evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="gti(gti.ds,TIME)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-					backscale spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" badpixlocation=${files%_BKG_SP*}.FITS
-					#evselect table="$files" energycolumn="PI" withfilteredset=yes filteredset="${files//SP_FILT/SP_FILT_PHASE$currentphase-$phasup}" keepfilteroutput=yes filtertype="expression" expression="(PHASE>=$currentphase&&PHASE<$phasup)" withspectrumset=yes spectrumset="${files//SP_FILT/SP_PHASE$currentphase-$phasup}" spectralbinsize=5 withspecranges=yes specchannelmin=0 specchannelmax="20479"
-				fi
-			done
-		fi
-		
-		
-	    	currentphase=$(bc <<< "$currentphase+$phaseinterval")
-	    	if [ "$(bc <<< "$currentphase > $phaselimit")" == "1" ]
-		then	currentphase=$(bc <<< "$currentphase - 1.0")
-		fi
-		if [ "$currentphase" == "$veryfirstcurrentphase" ]
-		then	break
-		fi
-	done
-	set -e
-	#for files in *SRC_SP_PHASE*
-	#	do	echo "rmfgen rmfset="${files//SRC_SP/SRC_RMF}" spectrumset="$files""
-	#		echo "arfgen arfset="${files//SRC_SP/SRC_ARF}" spectrumset="$files" withrmfset=yes rmfset="${files//SRC_SP/SRC_RMF}" withbadpixcorr=yes badpixlocation="${files%_SRC_SP*}.FITS" setbackscale=yes"
-	#		rmfgen rmfset="${files//SRC_SP/SRC_RMF}" spectrumset="$files"
-	#		arfgen arfset="${files//SRC_SP/SRC_ARF}" spectrumset="$files" withrmfset=yes rmfset="${files//SRC_SP/SRC_RMF}" withbadpixcorr=yes badpixlocation="${files%_SRC_SP*}.FITS" setbackscale=yes
-	#	done
-	set +e
+	fi
 	
 }
-
 #                                                                                       -----------------------------------
 #                                                                                   RUNNING MAIN PROCEDURES BY CALLING FUNCTIONS
 #                                                                                       ------------------------------------
@@ -3249,7 +3862,7 @@ then	if [ "$opted_method" == "-c" ]
 			else	echo "Please enter valid option."
 			fi
 		done
-	else	deti1="Lighcurves generation (spectra files are mandatory)"
+	else	deti1="Lighcurves generation"
 		deti2="Quiescent lightcurves and spectra maker"
 		deti3="Phase resolved spectra"
 		deti4="Flare lightcurve + spectra extraction"
@@ -3258,10 +3871,10 @@ then	if [ "$opted_method" == "-c" ]
 	
 		if [ "$selc" == "$deti1" ]
 		then 	cd pn
-			lightcurves_gui;
+			lightcurves_gui 0;
 			cd ..
 			cd mos
-			lightcurves_gui;
+			lightcurves_gui 1;
 			cd ..
 		elif [ "$selc" == "$deti2" ]
 		then	cd pn
@@ -3271,7 +3884,8 @@ then	if [ "$opted_method" == "-c" ]
 			quite_lightcurve_spectra_gui 0;
 			cd ..
 		elif [ "$selc" == "$deti3" ]
-		then	cd pn
+		then	pwd
+			cd pn
 			phase_resolved_spectra 1;
 			cd ..
 			cd mos
