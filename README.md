@@ -1,17 +1,18 @@
 # XMM-NEWTON
 This script reduces XMM-Newton's pointed observation data for imaging mode.
-To install:
+## To install:
   extract zip file, open extracted folder in terminal and immediately run:
   bash installer.sh
-Usage:
+## Usage:
   for GUI mode:
   xmmadvanced -g 2>&1 | tee whatever_name_for_logfile.log
   for CLI mode:
   xmmadvanced -c
   for help:
   xmmadvanced 
-Note:
+## Note:
   some features are missing in CLI mode so GUI mode is preffered.
   While script runs, it opens ds9 windows recursively, keep sure just newest ds9 window is open.
   Already opened ds9 windows should be killed before continuing to next step. 
   It is advised to make a copy of .bashrc file prior to installation of this script. 
+## The script is tested for Linux Ubuntu 16, 18, 20
